@@ -5,23 +5,15 @@
  */
 package TP3;
 
+import java.util.ArrayList;
 import java.util.List;
-import utilitarios.Data;
 
 /**
  *
  * @author gonca
  */
-public abstract class Evento {
+public class Workshop {
+     private List <String> listaTemasWorkshop = new ArrayList();
+     private List <String> listaPeritosWorkshop = new ArrayList();
     
-private String titulo;
-private String textoDescritivo;
-private String Local;
-private Data dataInicio;
-private Data dataFim;
-private Data dataLimiteSubCandidaturas;
-List <String> organizadores;
-
-
-
 }
