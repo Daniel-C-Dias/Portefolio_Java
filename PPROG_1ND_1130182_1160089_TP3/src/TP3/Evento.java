@@ -5,10 +5,23 @@
  */
 package TP3;
 
+import java.util.List;
+import utilitarios.Data;
+
 /**
  *
  * @author gonca
  */
 public class Evento {
     
+private String titulo;
+private String textoDescritivo;
+private String Local;
+private Data dataInicio;
+private Data dataFim;
+private Data dataLimiteSubCandidaturas;
+List <String> organizadores;
+
+
+
 }
