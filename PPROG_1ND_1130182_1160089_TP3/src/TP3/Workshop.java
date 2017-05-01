@@ -15,5 +15,5 @@ import java.util.List;
 public class Workshop {
      private List <String> listaTemasWorkshop = new ArrayList();
      private List <String> listaPeritosWorkshop = new ArrayList();
-    
+     private Utilizador organizadorWorkshop; // tem de ser igual ao do organizador do congresso?
 }

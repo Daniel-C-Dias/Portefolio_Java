@@ -16,12 +16,12 @@ public abstract class Evento {
     
 private String titulo;
 private String textoDescritivo;
-private String Local;
+private String local;
 private Data dataInicio;
 private Data dataFim;
 private Data dataLimiteSubCandidaturas;
-List <String> organizadores;
-
-
+List <String> listaOrganizadoresEvento;
+List <Candidatura> listaCandidaturasEvento;
+List <Utilizador> listaFaeEvento;
 
 }

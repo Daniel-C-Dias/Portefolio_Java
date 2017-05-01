@@ -23,10 +23,12 @@ public class Utilizador {
        Gestor_Eventos{ public String toString() { return "Gestor de Eventos"; }},
        Organizador{ public String toString() { return "Organizador"; }},
        FAE { public String toString() { return "Funcionário de Apoio ao Evento"; }},
-       Participante{ public String toString() { return "Participante"; }}}  
-    
+       Participante{ public String toString() { return "Participante"; }},
+       Representante_Participante{ public String toString() { return "Representante do Participante"; }},
+       Sem_Role{ public String toString() { return "Sem Role"; }},
+    }  
     
     List <Role> rolesUtilizador = new ArrayList();
     
-    
+    List <DecisaoCandidatura> listaDecisoes = new ArrayList(); // pensar numa possivel solução , pois só interessa a FAE
 }

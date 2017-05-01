@@ -5,6 +5,7 @@
  */
 package TP3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +13,8 @@ import java.util.List;
  * @author gonca
  */
 public class CentroEventos {
+    
+    List <AlgoritmoAtribuicao> listaAlgoritmos = new ArrayList();
     
     public List<Evento> getRegistoEventos(){
        
