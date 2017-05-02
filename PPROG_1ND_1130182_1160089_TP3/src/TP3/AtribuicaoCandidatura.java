@@ -5,17 +5,12 @@
  */
 package TP3;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author gonca
  */
-public class Candidatura {
+public class AtribuicaoCandidatura {
     
-  private Utilizador representante;
-  private Utilizador participante;
-  private List <AtribuicaoCandidatura> listaAtribuicoes = new ArrayList();
-  
+    private Utilizador fae;
+    private DecisaoCandidatura decisaoFae;
 }

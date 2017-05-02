@@ -30,5 +30,5 @@ public class Utilizador {
     
     List <Role> rolesUtilizador = new ArrayList();
     
-    List <DecisaoCandidatura> listaDecisoes = new ArrayList(); // pensar numa possivel solução , pois só interessa a FAE
+    
 }
