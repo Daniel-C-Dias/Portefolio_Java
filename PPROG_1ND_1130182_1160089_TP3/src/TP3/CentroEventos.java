@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class CentroEventos {
     
-    List <AlgoritmoAtribuicao> listaAlgoritmos = new ArrayList();
+    private List <AlgoritmoAtribuicao> listaAlgoritmos = new ArrayList();
     
     public List<Evento> getRegistoEventos(){
        

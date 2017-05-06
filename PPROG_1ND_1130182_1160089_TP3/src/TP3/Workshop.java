@@ -17,3 +17,5 @@ public class Workshop {
      private List <String> listaPeritosWorkshop = new ArrayList();
      private Utilizador organizadorWorkshop; // tem de ser igual ao do organizador do congresso?
 }
+
+

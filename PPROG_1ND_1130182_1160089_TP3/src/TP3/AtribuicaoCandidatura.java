@@ -11,6 +11,9 @@ package TP3;
  */
 public class AtribuicaoCandidatura {
     
-    private Utilizador fae;
-    private DecisaoCandidatura decisaoFae;
+    private int idAtribuicao;
+    private FAE fae;
+    private int idCandidatura;
+    private DecisaoCandidatura decisao;
+    
 }

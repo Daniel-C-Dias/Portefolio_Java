@@ -13,9 +13,9 @@ import java.util.List;
  * @author gonca
  */
 public class Candidatura {
-    
-  private Utilizador representante;
-  private Utilizador participante;
-  private List <AtribuicaoCandidatura> listaAtribuicoes = new ArrayList();
   
+  private int idCandidatura;
+  private Representante representante;
+  private Participante participante;
+   
 }

@@ -11,6 +11,7 @@ package TP3;
  */
 public class DecisaoCandidatura {
     
+    private boolean jaAvaliada;
     private boolean aceite; 
-    private String justificacaoDecisao = "Candidatura ainda não avaliada"; // texto por defeito antes da avaliação
+    private String justificacaoDecisao;
 }
