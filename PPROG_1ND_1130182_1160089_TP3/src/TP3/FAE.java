@@ -11,16 +11,29 @@ package TP3;
  */
 public class FAE {
     
-    Utilizador uFae;
+    private Utilizador uFae;
     
-    public FAE()
-    {
+    public FAE(){
       
     }
     
     public FAE(Utilizador u)
     {
       this.uFae = u;
+    }
+    
+        /**
+     * @return the uFae
+     */
+    public Utilizador getuFae() {
+        return uFae;
+    }
+
+    /**
+     * @param uFae the uFae to set
+     */
+    public void setuFae(Utilizador uFae) {
+        this.uFae = uFae;
     }
     
     public boolean valida()
@@ -32,7 +45,12 @@ public class FAE {
     @Override
     public String toString()
     {
-        return this.uFae != null ? this.uFae.toString() : null;
+        return this.getuFae().toString();
+    }
+
+    public boolean equals(FAE obj) {
+        return (this.uFae == obj.uFae);
     }
     
 }
+

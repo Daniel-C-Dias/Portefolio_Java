@@ -14,7 +14,9 @@ import java.util.List;
  */
 public class RegistoEventos {
 
-    List<Evento> listaEventos = new ArrayList();
+    private List<Evento> listaEventos = new ArrayList();
+    
+    
 
     public boolean add(Evento e) {
         listaEventos.add(e);
@@ -24,5 +26,40 @@ public class RegistoEventos {
     public Evento get(int index) {
         return listaEventos.get(index);
     }
-
+   
+    public List<Evento> getlistaEventosDeFae(Utilizador fae){
+        List<Evento> listaEventosFae = new ArrayList();
+        for (Evento e : listaEventos ){
+            List<FAE> listaFae= e.getListaFaeEvento();
+            for (FAE f : listaFae){
+                if (f.getuFae().equals(fae)){
+                    listaEventosFae.add(e);
+                }
+            }
+        }
+        return listaEventosFae;
+    }
+    
+//    public Evento novoEvento()
+//    {
+//        return new Evento();
+//    }
+//
+//    public boolean registaEvento(Evento e)
+//    {
+//        if( validaEvento(e) )
+//            return addEvento(e);
+//        else
+//            return false;
+//    }
+//
+//    private boolean addEvento(Evento e)
+//    {
+//        return listaEventos.add(e);
+//    }
+//    
+//    public boolean validaEvento(Evento e)
+//    {
+//        return e.valida();
+//    }
 }

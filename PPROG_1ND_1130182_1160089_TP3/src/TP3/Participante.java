@@ -12,13 +12,13 @@ package TP3;
 public class Participante {
     
      private Utilizador uParticipante;
-  
+     
   
     public Participante()
     {
     }
   
-  
+    
     public void setUtilizador(Utilizador u)
     {
         this.uParticipante = u;

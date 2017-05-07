@@ -17,9 +17,16 @@ public class Organizador {
     public Organizador()
     {
     }
-  
-  
-    public void setUtilizador(Utilizador u)
+    
+    
+     /**
+     * @return the uOrganizador
+     */
+    public Utilizador getuOrganizador() {
+        return uOrganizador;
+    }
+    
+    public void setuOrganizador(Utilizador u)
     {
         this.uOrganizador = u;
     }
@@ -35,8 +42,10 @@ public class Organizador {
  @Override
     public String toString()
     {
-        return this.uOrganizador.toString();
+        return this.getuOrganizador().toString();
     }
+
+  
 }
 
     
