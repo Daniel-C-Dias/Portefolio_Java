@@ -13,11 +13,12 @@ public class CentroEventos {
     private List <AlgoritmoAtribuicao> listaAlgoritmos = new ArrayList();
     
     public List<Evento> getRegistoEventos(){
-        
-        return 
+        //code to do
+        return null;
     }
     
     public List<Evento> getRegistoUtilizadores(){
-       
+        //code to do
+       return null;
     }
 }

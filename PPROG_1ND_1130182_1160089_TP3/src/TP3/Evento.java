@@ -3,7 +3,7 @@ package TP3;
 
 import java.util.ArrayList;
 import java.util.List;
-import utilitarios.Data;
+import Utilitarios.Data;
 
 /**
  *
@@ -28,6 +28,19 @@ public abstract class Evento {
         
     }
 
+    /**
+     *
+     * @param idEvento
+     * @param titulo
+     * @param textoDescritivo
+     * @param local
+     * @param dataInicio
+     * @param dataFim
+     * @param dataLimiteSubCandidaturas
+     * @param listaOrganizadoresEvento
+     * @param listaCandidaturasEvento
+     * @param listaFaeEvento
+     */
     public Evento(int idEvento, String titulo, String textoDescritivo, String local, Data dataInicio, Data dataFim, Data dataLimiteSubCandidaturas, List<Organizador> listaOrganizadoresEvento, List<Candidatura> listaCandidaturasEvento, List<FAE> listaFaeEvento) {
         this.idEvento = idEvento;
         this.titulo = titulo;
@@ -43,6 +56,7 @@ public abstract class Evento {
     
     /**
      * Construtor de Cópia
+     * @param outroEvento
      */
     public Evento(Evento outroEvento) {
 		this.idEvento = outroEvento.idEvento;
@@ -57,35 +71,8 @@ public abstract class Evento {
                 this.listaFaeEvento = outroEvento.listaFaeEvento;     	
 	}
 
-    public Evento(int idEvento, String titulo, String textoDescritivo, String local, Data dataInicio, Data dataFim, Data dataLimiteSubCandidaturas, List<Organizador> listaOrganizadoresEvento, List<Candidatura> listaCandidaturasEvento, List<FAE> listaFaeEvento) {
-        this.idEvento = idEvento;
-        this.titulo = titulo;
-        this.textoDescritivo = textoDescritivo;
-        this.local = local;
-        this.dataInicio = dataInicio;
-        this.dataFim = dataFim;
-        this.dataLimiteSubCandidaturas = dataLimiteSubCandidaturas;
-        this.listaOrganizadoresEvento = listaOrganizadoresEvento;
-        this.listaCandidaturasEvento = listaCandidaturasEvento;
-        this.listaFaeEvento = listaFaeEvento;
-    }
-    
-    /**
-     * Construtor de Cópia
-     */
-    public Evento(Evento outroEvento) {
-		this.idEvento = outroEvento.idEvento;
-                this.titulo = outroEvento.titulo;
-                this.textoDescritivo = outroEvento.textoDescritivo;
-                this.local = outroEvento.local;
-                this.dataInicio = outroEvento.dataInicio;
-                this.dataFim = outroEvento.dataFim;
-                this.dataLimiteSubCandidaturas = outroEvento.dataLimiteSubCandidaturas;
-                this.listaOrganizadoresEvento = outroEvento.listaOrganizadoresEvento;
-                this.listaCandidaturasEvento = outroEvento.listaCandidaturasEvento;
-                this.listaFaeEvento = outroEvento.listaFaeEvento;     	
-	}
-
+   
+ 
     /**
      * @return the idEvento
      */
