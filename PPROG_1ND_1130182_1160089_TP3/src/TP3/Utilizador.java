@@ -15,33 +15,7 @@ public class Utilizador {
     private String password;
     private String nome;
     
-    private static final String USERNAME = "username";
-    private static final String EMAIL = "email";
-    private static final String PASSWORD = "password";
-    private static final String NOME = "nome";
-    
-//    public enum Role{ 
-//       Gestor_Eventos{ public String toString() { return "Gestor de Eventos"; }},
-//       Organizador{ public String toString() { return "Organizador"; }},
-//       FAE { public String toString() { return "Funcionário de Apoio ao Evento"; }},
-//       Participante{ public String toString() { return "Participante"; }},
-//       Representante_Participante{ public String toString() { return "Representante do Participante"; }},
-//       Sem_Role{ public String toString() { return "Sem Role"; }},
-//    }  
-//    
-//    List <Role> rolesUtilizador = new ArrayList();
-
-    
-     /**
-     * @Construtor por defeito
-     */
-    public Utilizador() {
-        this.userName = USERNAME;
-        this.email = EMAIL;
-        this.password = PASSWORD;
-        this.nome = NOME;
-    }
-    
+     
     /**
      * @Construtor por inteiro
      */
