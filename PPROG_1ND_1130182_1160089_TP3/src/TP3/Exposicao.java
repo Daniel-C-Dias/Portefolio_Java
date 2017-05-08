@@ -7,7 +7,7 @@ package TP3;
 
 /**
  *
- * @author gonca
+ * @author Daniel Dias & José Gonçalves
  */
 public class Exposicao extends Evento{
     

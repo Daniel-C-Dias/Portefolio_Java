@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package TP3;
 
 import java.util.ArrayList;
@@ -10,12 +6,15 @@ import java.util.List;
 
 /**
  *
- * @author gonca
+ * @author Daniel Dias & José GOnçalves
  */
 public class Workshop {
-     private List <String> listaTemasWorkshop = new ArrayList();
+     
+    private List <String> listaTemasWorkshop = new ArrayList();
      private List <String> listaPeritosWorkshop = new ArrayList();
      private Organizador organizadorWorkshop; // tem de ser um dos organizadores do congresso
+     
+     
 }
 
 
