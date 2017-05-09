@@ -10,19 +10,20 @@ import java.util.List;
  */
 public class RegistoEventos {
 
-    private List<Evento> listaEventos = new ArrayList();
-    
-    
+    private final List<Evento> listaEventos;
+    private List<Evento> listaEventoOrganizador;
 
-    public boolean add(Evento e) {
+    
+    public RegistoEventos(){
+        this.listaEventos= new ArrayList();
+    }
+
+    private boolean addEvento(Evento e) {
         listaEventos.add(e);
         return true;
     }
 
-    public Evento get(int index) {
-        return listaEventos.get(index);
-    }
-   
+     
     public List<Evento> getlistaEventosDeFae(Utilizador fae){
         List<Evento> listaEventosFae = new ArrayList();
         for (Evento e : listaEventos ){
@@ -36,26 +37,22 @@ public class RegistoEventos {
         return listaEventosFae;
     }
     
-//    public Evento novoEvento()
-//    {
-//        return new Evento();
-//    }
-//
-//    public boolean registaEvento(Evento e)
-//    {
-//        if( validaEvento(e) )
-//            return addEvento(e);
-//        else
-//            return false;
-//    }
-//
-//    private boolean addEvento(Evento e)
-//    {
-//        return listaEventos.add(e);
-//    }
-//    
-//    public boolean validaEvento(Evento e)
-//    {
-//        return e.valida();
-//    }
+    public Evento novoEvento()
+    {
+        return new Evento();
+    }
+
+    public boolean registaEvento(Evento e)
+    {
+        if( validaEvento(e) )
+            return addEvento(e);
+        else
+            return false;
+    }
+
+    
+    public boolean validaEvento(Evento e)
+    {
+        return e.valida();
+    }
 }

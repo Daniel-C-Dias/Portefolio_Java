@@ -24,10 +24,6 @@ public abstract class Evento {
     private List<FAE> listaFaeEvento;
     
     
-    public Evento(){
-        
-    }
-
     /**
      *
      * @param idEvento
