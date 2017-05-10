@@ -12,7 +12,7 @@ public class CentroEventos {
     
     private List <AlgoritmoAtribuicao> listaAlgoritmos = new ArrayList();
     
-    public List<Evento> getRegistoEventos(){
+    public static List<Evento> getRegistoEventos(){
         
         RegistoEventos.
         return null;

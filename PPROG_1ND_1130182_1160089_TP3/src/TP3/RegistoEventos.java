@@ -55,4 +55,8 @@ public class RegistoEventos {
     {
         return e.valida();
     }
+    
+    public static Evento getEvento(int eventoID){
+        //method to do
+    }
 }
