@@ -3,6 +3,7 @@ package TP3;
 
 import java.util.ArrayList;
 import java.util.List;
+import Utilitarios.*;
 
 /**
  *
@@ -18,6 +19,11 @@ public class RegistoEventos {
         this.listaEventos= new ArrayList();
     }
 
+    public List<Evento> getListaEventos() {
+        return listaEventos;
+    }
+    
+    
     private boolean addEvento(Evento e) {
         listaEventos.add(e);
         return true;
@@ -56,7 +62,33 @@ public class RegistoEventos {
         return e.valida();
     }
     
-    public static Evento getEvento(int eventoID){
-        //method to do
+    public Evento getEvento(int eventoID){
+        
+        Evento eventoPretendido = null;
+        
+        for (Evento e : listaEventos) {
+            if(e.getIdEvento() == eventoID) {
+                eventoPretendido = e;
+            }
+        }
+        
+        return eventoPretendido;
+    }
+    
+     public List<Evento> getEventosSubmissaoPronta() {
+        
+         List <Evento> eventosActivos = new ArrayList();
+         
+         for (Evento e : listaEventos ){
+             if(Data.dataAtual().isMaior(e.getDataLimiteSubCandidaturas())) {
+                 continue;
+             }
+             else {
+                 eventosActivos.add(e);
+             }
+         }
+         
+         return eventosActivos;
+         
     }
 }

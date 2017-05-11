@@ -22,6 +22,13 @@ public class RegistarCandidaturaController {
     public RegistarCandidaturaController() {
     }
 
+    /**
+     *
+     * @param e
+     * @param er
+     * @param lsre
+     * @param al
+     */
     public RegistarCandidaturaController(Evento e, RegistoEventos er, List<Evento> lsre, RegistoCandidaturas al) {
         this.e = e;
         this.er = er;
@@ -29,15 +36,16 @@ public class RegistarCandidaturaController {
         this.al = al;
     }
     
-    public List<Evento>  getEventosActivos(){ 
-        return CentroEventos.getRegistoEventos();
+    public List<Evento> getEventosActivos(){ 
+        this.er = CentroEventos.getRegistoEventos();
+        lsre = er.getEventosSubmissaoPronta();
+        
+        return lsre;
     }
     
     public void setContext(int eventoID){
-        this.e = RegistoEventos.getEvento(eventoID);
+        this.e = er.getEvento(eventoID);
     }
-
-   
-    
+  
     
 }

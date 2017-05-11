@@ -77,7 +77,7 @@ public abstract class Evento {
     }
 
     /**
-     * @return the titulo
+     * @return titulo
      */
     public String getTitulo() {
         return titulo;
