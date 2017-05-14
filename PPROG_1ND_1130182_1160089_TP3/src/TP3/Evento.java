@@ -17,7 +17,7 @@ public abstract class Evento {
     private String local;
     private Data dataInicio;
     private Data dataFim;
-    private Data dataLimiteSubCandidaturas;
+    private Data dataLimiteSubmissaoCandidaturas;
     private List<Organizador> listaOrganizadoresEvento;
     private List<Candidatura> listaCandidaturasEvento;
     private List<AtribuicaoCandidatura> listaAtribuicoes = new ArrayList();
@@ -44,7 +44,7 @@ public abstract class Evento {
         this.local = local;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
-        this.dataLimiteSubCandidaturas = dataLimiteSubCandidaturas;
+        this.dataLimiteSubmissaoCandidaturas = dataLimiteSubCandidaturas;
         this.listaOrganizadoresEvento = listaOrganizadoresEvento;
         this.listaCandidaturasEvento = listaCandidaturasEvento;
         this.listaFaeEvento = listaFaeEvento;
@@ -61,7 +61,7 @@ public abstract class Evento {
                 this.local = outroEvento.local;
                 this.dataInicio = outroEvento.dataInicio;
                 this.dataFim = outroEvento.dataFim;
-                this.dataLimiteSubCandidaturas = outroEvento.dataLimiteSubCandidaturas;
+                this.dataLimiteSubmissaoCandidaturas = outroEvento.dataLimiteSubmissaoCandidaturas;
                 this.listaOrganizadoresEvento = outroEvento.listaOrganizadoresEvento;
                 this.listaCandidaturasEvento = outroEvento.listaCandidaturasEvento;
                 this.listaFaeEvento = outroEvento.listaFaeEvento;     	
@@ -112,10 +112,10 @@ public abstract class Evento {
     }
 
     /**
-     * @return the dataLimiteSubCandidaturas
+     * @return the dataLimiteSubmissaoCandidaturas
      */
     public Data getDataLimiteSubCandidaturas() {
-        return dataLimiteSubCandidaturas;
+        return dataLimiteSubmissaoCandidaturas;
     }
 
     /**
@@ -189,10 +189,10 @@ public abstract class Evento {
     }
 
     /**
-     * @param dataLimiteSubCandidaturas the dataLimiteSubCandidaturas to set
+     * @param dataLimiteSubCandidaturas the dataLimiteSubmissaoCandidaturas to set
      */
     public void setDataLimiteSubCandidaturas(Data dataLimiteSubCandidaturas) {
-        this.dataLimiteSubCandidaturas = dataLimiteSubCandidaturas;
+        this.dataLimiteSubmissaoCandidaturas = dataLimiteSubCandidaturas;
     }
 
     /**
@@ -247,6 +247,18 @@ public abstract class Evento {
 
     private boolean addOrganizador(Organizador o) {
         return this.getListaOrganizadoresEvento().add(o);
+    }
+    
+   
+    public List<AtribuicaoCandidatura> getListaAtribuicaoCandidaturasFAE(Utilizador uFae){
+        List<AtribuicaoCandidatura> listaAtribuicaoCandidaturasFae = new ArrayList();
+        for (AtribuicaoCandidatura atribuicao : listaAtribuicoes){
+             //valida que ainda não foi avaliada (ainda não tem decisão)   
+            if (atribuicao.getFae().getuFae().equals(uFae) && atribuicao.getDecisao()==null ){
+                    listaAtribuicaoCandidaturasFae.add(atribuicao);
+                }
+            }
+        return listaAtribuicaoCandidaturasFae;
     }
 
     @Override

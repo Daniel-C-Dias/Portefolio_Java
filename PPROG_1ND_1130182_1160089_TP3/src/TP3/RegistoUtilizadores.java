@@ -11,12 +11,19 @@ import java.util.List;
 public class RegistoUtilizadores {
     
     
-   private final List<Evento> listaUtilizadores;
+   private List<Evento> listaUtilizadores;
    
-    public RegistoUtilizadores(){
-        this.listaUtilizadores= new ArrayList();
+   private static RegistoUtilizadores registoUtilizadores = new RegistoUtilizadores();
+    
+    private RegistoUtilizadores(){
+        
     }
-
+    
+    public static RegistoUtilizadores getRegistoUtilizadores( ) {
+      return registoUtilizadores;
+   }
+    
+   
     public boolean add(Evento e) {
         listaUtilizadores.add(e);
         return true;

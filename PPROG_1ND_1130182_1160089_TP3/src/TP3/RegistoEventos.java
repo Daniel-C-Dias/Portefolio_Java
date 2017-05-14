@@ -11,13 +11,20 @@ import Utilitarios.*;
  */
 public class RegistoEventos {
 
-    private final List<Evento> listaEventos;
+    private List<Evento> listaEventos;
     private List<Evento> listaEventoOrganizador;
-
     
-    public RegistoEventos(){
-        this.listaEventos= new ArrayList();
+    private static RegistoEventos registoEventos = new RegistoEventos();
+    
+    private RegistoEventos(){
+        
     }
+    
+    public static RegistoEventos getRegistoEventos( ) {
+      return registoEventos;
+   }
+    
+  
 
     public List<Evento> getListaEventos() {
         return listaEventos;
@@ -29,7 +36,7 @@ public class RegistoEventos {
         return true;
     }
 
-     
+    // validar também que a data é inferior à data inicio do evento!! 
     public List<Evento> getlistaEventosDeFae(Utilizador fae){
         List<Evento> listaEventosFae = new ArrayList();
         for (Evento e : listaEventos ){
@@ -43,9 +50,14 @@ public class RegistoEventos {
         return listaEventosFae;
     }
     
-    public Evento novoEvento()
+    public Evento novaExposicao()
     {
-        return new Evento();
+        return new Exposicao();
+    }
+    
+    public Evento novoCongresso()
+    {
+        return new Congresso();
     }
 
     public boolean registaEvento(Evento e)

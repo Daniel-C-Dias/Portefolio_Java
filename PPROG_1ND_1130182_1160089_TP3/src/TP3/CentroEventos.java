@@ -12,18 +12,25 @@ import TP3.Evento;
  */
 public class CentroEventos {
     
-    private List <AlgoritmoAtribuicao> listaAlgoritmos = new ArrayList();
-    private static RegistoEventos registoEventos;
+    private  List <AlgoritmoAtribuicao> listaAlgoritmos = new ArrayList();
+    private  RegistoEventos registoEventos;
+    private  RegistoUtilizadores registoUtilizadores;
+    private static CentroEventos centroEventos = new CentroEventos();
+    
+    private CentroEventos(){
+        
+    }
+    
+    public static CentroEventos getCentroEventos( ) {
+      return centroEventos;
+   }
 
-    public static RegistoEventos getRegistoEventos() {
+    public RegistoEventos getRegistoEventos() {
         return registoEventos;
     }
     
-    
-    
    
-    public List<Evento> getRegistoUtilizadores(){
-        //code to do
-       return null;
+    public RegistoUtilizadores getRegistoUtilizadores(){
+       return registoUtilizadores;
     }
 }
