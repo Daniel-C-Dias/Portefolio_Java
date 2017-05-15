@@ -95,7 +95,7 @@ public class MenuUI extends JFrame{
     
      private JPanel criarPainelBotao(JButton b) {
         JPanel p = new JPanel();
-        ((FlowLayout)p.getLayout()).setAlignment(FlowLayout.LEFT);
+        ((FlowLayout)p.getLayout()).setAlignment(FlowLayout.CENTER);
         p.add(b);
         return p;
     }

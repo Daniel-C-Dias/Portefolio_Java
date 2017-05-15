@@ -17,12 +17,12 @@ import java.util.List;
  */
 public class DecidirCandidaturaController {
     
-    private CentroEventos centroEventos;
+    private final CentroEventos centroEventos;
     
 
-    public DecidirCandidaturaController(CentroEventos centroEventos)
+    public DecidirCandidaturaController()
     {
-        this.centroEventos= centroEventos;
+        this.centroEventos= CentroEventos.getCentroEventos();
     }
     
     public List<Evento> getListaEventosFAE(Utilizador uFae){
