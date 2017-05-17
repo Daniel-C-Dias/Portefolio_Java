@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package centroeventos.controller;
 
-import TP3.AtribuicaoCandidatura;
-import TP3.CentroEventos;
-import TP3.Evento;
-import TP3.Utilizador;
+import centroeventos.model.AtribuicaoCandidatura;
+import centroeventos.model.CentroEventos;
+import centroeventos.model.Evento;
+import centroeventos.model.Utilizador;
 import java.util.List;
 
 /**

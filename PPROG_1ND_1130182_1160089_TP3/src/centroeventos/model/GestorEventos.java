@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TP3;
+package centroeventos.model;
 
 /**
  *
- * @author Daniel Dias & José Gonçalves
+ * @author gonca
  */
-public class Exposicao extends Evento{
+public class GestorEventos {
     
 }

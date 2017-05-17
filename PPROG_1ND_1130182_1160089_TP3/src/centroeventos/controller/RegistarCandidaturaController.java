@@ -1,12 +1,12 @@
-package controllers;
+package centroeventos.controller;
 
-import TP3.Candidatura;
-import TP3.Evento;
-import TP3.CentroEventos;
-import TP3.Participante;
-import TP3.RegistoEventos;
-import TP3.RegistoCandidaturas;
-import TP3.Representante;
+import centroeventos.model.Candidatura;
+import centroeventos.model.Evento;
+import centroeventos.model.CentroEventos;
+import centroeventos.model.Participante;
+import centroeventos.model.RegistoEventos;
+import centroeventos.model.RegistoCandidaturas;
+import centroeventos.model.Representante;
 import java.util.ArrayList;
 import java.util.List;
 

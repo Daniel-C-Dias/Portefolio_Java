@@ -1,5 +1,5 @@
 
-package TP3;
+package centroeventos.model;
 
 /**
  *

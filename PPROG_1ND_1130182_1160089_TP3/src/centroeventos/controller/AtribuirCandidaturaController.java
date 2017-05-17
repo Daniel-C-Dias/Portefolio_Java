@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package centroeventos.controller;
 
-import TP3.CentroEventos;
+import centroeventos.model.CentroEventos;
 
 /**
  *

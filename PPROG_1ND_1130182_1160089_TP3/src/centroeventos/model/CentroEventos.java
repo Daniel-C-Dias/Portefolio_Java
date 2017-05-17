@@ -1,10 +1,10 @@
 
-package TP3;
+package centroeventos.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import TP3.RegistoEventos;
-import TP3.Evento;
+import centroeventos.model.RegistoEventos;
+import centroeventos.model.Evento;
 
 /**
  *
@@ -13,7 +13,7 @@ import TP3.Evento;
 public class CentroEventos {
     
     private  List <AlgoritmoAtribuicao> listaAlgoritmos = new ArrayList();
-    private  RegistoEventos registoEventos;
+    private static  RegistoEventos registoEventos; //isto não é static? Mas sempre de eventos é static?
     private  RegistoUtilizadores registoUtilizadores;
     private static CentroEventos centroEventos = new CentroEventos();
     
@@ -25,7 +25,7 @@ public class CentroEventos {
       return centroEventos;
    }
 
-    public RegistoEventos getRegistoEventos() {
+    public static RegistoEventos getRegistoEventos() {
         return registoEventos;
     }
     

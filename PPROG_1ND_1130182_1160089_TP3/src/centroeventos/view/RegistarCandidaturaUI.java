@@ -1,5 +1,5 @@
 
-package UI;
+package centroeventos.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
-import TP3.*;
 import Utilitarios.*;
 
 /**

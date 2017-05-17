@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package centroeventos.model;
 
 /**
  *
- * @author gonca
+ * @author Daniel Dias & José Gonçalves
  */
-public class Main {
-
-    public static void main(String[] args) {
-        MenuUI j = new MenuUI("Página Inicial");
-
-    }
+public class Exposicao extends Evento{
+    
 }
