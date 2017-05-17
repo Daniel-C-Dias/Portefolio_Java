@@ -1,5 +1,5 @@
 1;Mega Evento;Mega Evento com mega cenas a acontecer;Porto;2017/05/23;2017/06/29;2020/05/12
 2;Altran Christmas Party;Festa de Natal da empresa Altran;Porto;2017/12/22;2017/12/23;2017/05/19
 3;TomorowLand;Festival de Musica Europeu;Estombol;2016/03/17;2016/04/01;2016/02/12
-5;Final da Liga dos Campeões;Final do campeonato de futebol europeu;Londres;2017/03/23;2017/04/01;2017/02/20
-6;Salão Erótico Porto;Exposiçao de Conceitos e Produtos Eróticos;Porto;2015/04/29;2015/05/02;2020/02/02
+5;Final da Liga dos Campeoes;Final do campeonato de futebol europeu;Londres;2017/03/23;2017/04/01;2017/02/20
+6;Salao Erotico Porto;Exposicao de Conceitos e Produtos Eroticos;Porto;2015/04/29;2015/05/02;2020/02/02

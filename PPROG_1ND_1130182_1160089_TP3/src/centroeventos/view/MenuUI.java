@@ -5,7 +5,9 @@
  */
 package centroeventos.view;
 
+import centroeventos.controller.LoginController;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -25,12 +27,19 @@ import javax.swing.JTextField;
  */
 public class MenuUI extends JFrame{
     
+    private final LoginController LOGIN_CONTROLLER;
     private JLabel textoInformativo;
+    private JTextField  email;
+    private JTextField  password;
+    private int userid;
+    
     
     public MenuUI(String titulo) {
         
     super(titulo);
-
+        
+        LOGIN_CONTROLLER= new LoginController();
+        
         JPanel pHeader = criarPainelHeader();
         JPanel pLogin = criarPainelLogin();
         JPanel pMenu = criarPanielBotoes();
@@ -62,8 +71,8 @@ public class MenuUI extends JFrame{
         JLabel lblPass = new JLabel("Password", JLabel.RIGHT);
 
         final int LARGURA = 10;
-        JTextField  email = new JTextField(LARGURA);
-        JTextField password = new JTextField(LARGURA);
+        email = new JTextField(LARGURA);
+        password = new JTextField(LARGURA);
         JButton btnlogin = criarBotaoLogin();
 
         JPanel p = new JPanel();
@@ -100,25 +109,38 @@ public class MenuUI extends JFrame{
         return p;
     }
     
-     
-     
     
     private JButton criarBotaoLogin() {
        JButton btn = new JButton("Login");
        btn.setToolTipText("Clique para se autenticar");
-//       btn.addActionListener(new ActionListener() {
-//           @Override
-//           public void actionPerformed(ActionEvent e) {
-//               Data dataRecebida = obterData();
-//               if(dataRecebida!=null){
-//               txtOutput.setText(dataRecebida.diaDaSemana());
-//               resultado.setText(null);
-//               }
-//           }
-//       });
+       btn.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               
+               if(LOGIN_CONTROLLER.fazerLogin(email.getText(), password.getText())){
+                   
+                   textoInformativo.setBackground(Color.green);
+                   textoInformativo.setText("Bem-vindo" + LOGIN_CONTROLLER.getUserName() );
+               }
+               else{
+                   textoInformativo.setBackground(Color.red);
+                   textoInformativo.setText("E-mail ou Password errados");
+               }
+           }
+       });
        
        return btn;
     }
     
-    
+    private JButton criarBotaoAtribuir() {
+      JButton btn = new JButton("Atribuir Candidaturas");
+       btn.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+              
+           }
+       });
+       
+       return btn;
+    }
 }

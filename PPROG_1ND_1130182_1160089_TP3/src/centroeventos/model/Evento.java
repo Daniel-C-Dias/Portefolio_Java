@@ -23,6 +23,7 @@ public abstract class Evento {
     private List<AtribuicaoCandidatura> listaAtribuicoes = new ArrayList();
     private List<FAE> listaFaeEvento;
     
+    public Evento(){}
     
     /**
      *
@@ -50,25 +51,6 @@ public abstract class Evento {
         this.listaFaeEvento = listaFaeEvento;
     }
     
-    /**
-     * Construtor de Cópia
-     * @param outroEvento
-     */
-    public Evento(Evento outroEvento) {
-		this.idEvento = outroEvento.idEvento;
-                this.titulo = outroEvento.titulo;
-                this.textoDescritivo = outroEvento.textoDescritivo;
-                this.local = outroEvento.local;
-                this.dataInicio = outroEvento.dataInicio;
-                this.dataFim = outroEvento.dataFim;
-                this.dataLimiteSubmissaoCandidaturas = outroEvento.dataLimiteSubmissaoCandidaturas;
-                this.listaOrganizadoresEvento = outroEvento.listaOrganizadoresEvento;
-                this.listaCandidaturasEvento = outroEvento.listaCandidaturasEvento;
-                this.listaFaeEvento = outroEvento.listaFaeEvento;     	
-	}
-
-   
- 
     /**
      * @return the idEvento
      */

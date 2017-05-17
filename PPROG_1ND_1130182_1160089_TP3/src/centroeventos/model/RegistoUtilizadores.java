@@ -11,7 +11,7 @@ import java.util.List;
 public class RegistoUtilizadores {
     
     
-   private List<Evento> listaUtilizadores;
+   private List<Utilizador> listaUtilizadores;
    
    private static RegistoUtilizadores registoUtilizadores = new RegistoUtilizadores();
     
@@ -23,15 +23,42 @@ public class RegistoUtilizadores {
       return registoUtilizadores;
    }
     
+    
    
-    public boolean add(Evento e) {
-        listaUtilizadores.add(e);
+    public boolean add(Utilizador u) {
+        getListaUtilizadores().add(u);
         return true;
     }
 
-    public Evento get(int index) {
-        return listaUtilizadores.get(index);
+    public Utilizador get(int index) {
+        return getListaUtilizadores().get(index);
     }
     
+     public boolean containsUtilizador(Utilizador u) {
+        return getListaUtilizadores().contains(u);
+    }
+
+    /**
+     * @return the listaUtilizadores
+     */
+    public List<Utilizador> getListaUtilizadores() {
+        return listaUtilizadores;
+    }
+
+    /**
+     * @param listaUtilizadores the listaUtilizadores to set
+     */
+    public void setListaUtilizadores(List<Utilizador> listaUtilizadores) {
+        this.listaUtilizadores = listaUtilizadores;
+    }
+    
+    public Utilizador getUtilizadorPorEmail(String email){
+        for (Utilizador u : listaUtilizadores){
+            if (u.getEmail().equals(email)){
+                return u;
+            }
+        }
+        return null;
+    }
     
 }

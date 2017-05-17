@@ -18,7 +18,7 @@ public class RegistoCandidaturas {
     }
     
     /**
-     *Isto tudo serve para garantir que a classe torna-se um singleton, retornando a instancia unica da lista que é o Registo de Candidaturas
+     *Isto tudo serve para garantir que a classe torna-se um singleton, existindo apenas uma instancia unica da lista que é o Registo de Candidaturas
      * 
      * @return registoCandidaturas
      */

@@ -1,4 +1,4 @@
 1;Carlos Alberto;Altran
 2;Francisco Gomes;Costa Cardoso;
-3;Rodrigo Mourão;Continental;
-6;Jerónimo Martins;Ramos Pinto
+3;Rodrigo Mourao;Continental;
+6;Jeronimo Martins;Ramos Pinto

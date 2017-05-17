@@ -5,10 +5,18 @@
  */
 package centroeventos.model;
 
+import Utilitarios.Data;
+import java.util.List;
+
 /**
  *
  * @author Daniel Dias & José Gonçalves
  */
 public class Exposicao extends Evento{
     
+    public Exposicao(){}
+    
+    public Exposicao(int idEvento, String titulo, String textoDescritivo, String local, Data dataInicio, Data dataFim, Data dataLimiteSubCandidaturas, List<Organizador> listaOrganizadoresEvento, List<Candidatura> listaCandidaturasEvento, List<FAE> listaFaeEvento) {
+        super(idEvento, titulo, textoDescritivo, local, dataInicio, dataFim, dataLimiteSubCandidaturas, listaOrganizadoresEvento, listaCandidaturasEvento, listaFaeEvento);
+    }
 }

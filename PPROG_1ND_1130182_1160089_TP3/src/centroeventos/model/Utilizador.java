@@ -15,7 +15,8 @@ public class Utilizador {
     private String password;
     private String nome;
     
-     
+    public Utilizador (){} 
+    
     /**
      * @Construtor por inteiro
      */
@@ -26,17 +27,7 @@ public class Utilizador {
         this.nome = nome;
     }
     
-     /**
-     * @Construtor de Cópia
-     */
-    public Utilizador(Utilizador outroUtilizador){
-        this.userName = outroUtilizador.userName;
-        this.email = outroUtilizador.email;
-        this.password = outroUtilizador.password;
-        this.nome = outroUtilizador.nome;
-                
-    }
-
+   
     public String getEmail() {
         return email;
     }
@@ -69,8 +60,10 @@ public class Utilizador {
         this.userName = userName;
     }
     
+    public boolean validarAutenticacao(String email, String password){
+       return (this.email.equals(email)&& this.password.equals(password));
+    }
     
-
     @Override
     public String toString()
     {

@@ -8,7 +8,10 @@ package centroeventos.view;
 public class Main {
 
     public static void main(String[] args) {
-        MenuUI j = new MenuUI("Página Inicial");
+        
+        //inicializar todas as instancias necessarias dos dados
+        
+        MenuUI menu = new MenuUI("Página Inicial");
 
     }
 }

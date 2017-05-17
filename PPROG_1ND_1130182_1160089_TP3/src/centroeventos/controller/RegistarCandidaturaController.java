@@ -18,7 +18,6 @@ public class RegistarCandidaturaController {
 
     private CentroEventos centroEventos;
     private Evento eventoACandidatar;
-    private List<Evento> listaEventosDisponiveis;
     private List<Candidatura> listaCandidaturas;
     private Candidatura candidaturaARegistar;
 
@@ -27,7 +26,7 @@ public class RegistarCandidaturaController {
     }
 
     public List<Evento> getEventosActivos() {
-        return listaEventosDisponiveis = centroEventos.getRegistoEventos().getEventosSubmissaoPronta();
+        return centroEventos.getRegistoEventos().getEventosSubmissaoPronta();
 
     }
 
