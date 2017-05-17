@@ -14,8 +14,10 @@ public class Candidatura {
   private int idCandidatura;
   private Representante representante;
   private Participante participante;
+  private int contaCandidaturas;
 
     public Candidatura() {
+        contaCandidaturas++;
     }
   
   
@@ -23,6 +25,7 @@ public class Candidatura {
         this.idCandidatura = idCandidatura;
         this.representante = representante;
         this.participante = participante;
+        contaCandidaturas++;
     }
 
     public int getIdCandidatura() {

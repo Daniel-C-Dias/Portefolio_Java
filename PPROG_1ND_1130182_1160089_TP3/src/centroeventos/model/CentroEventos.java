@@ -13,9 +13,9 @@ import centroeventos.model.Evento;
 public class CentroEventos {
     
     private  List <AlgoritmoAtribuicao> listaAlgoritmos = new ArrayList();
-    private static  RegistoEventos registoEventos; //isto não é static? Mas sempre de eventos é static?
     private  RegistoUtilizadores registoUtilizadores;
     private static CentroEventos centroEventos = new CentroEventos();
+    private  RegistoEventos registoEventos;
     
     private CentroEventos(){
         
@@ -25,12 +25,25 @@ public class CentroEventos {
       return centroEventos;
    }
 
-    public static RegistoEventos getRegistoEventos() {
+    public RegistoEventos getRegistoEventos() {
         return registoEventos;
     }
-    
+
    
     public RegistoUtilizadores getRegistoUtilizadores(){
        return registoUtilizadores;
     }
+
+    public void setRegistoEventos(RegistoEventos registoEventos) {
+        this.registoEventos = (RegistoEventos) RegistoEventos.getListaEventos();
+    }
+
+    
+
+    
+    
+    
+    
+    
+    
 }

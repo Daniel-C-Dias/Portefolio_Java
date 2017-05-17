@@ -11,8 +11,9 @@ import Utilitarios.*;
  */
 public class RegistoEventos {
 
-    private List<Evento> listaEventos;
+    private static List<Evento> listaEventos;
     private List<Evento> listaEventoOrganizador;
+   
     
     private static RegistoEventos registoEventos = new RegistoEventos();
     
@@ -26,7 +27,7 @@ public class RegistoEventos {
     
   
 
-    public List<Evento> getListaEventos() {
+    public static List<Evento> getListaEventos() {
         return listaEventos;
     }
     

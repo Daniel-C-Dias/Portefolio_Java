@@ -16,55 +16,51 @@ import java.util.List;
  */
 public class RegistarCandidaturaController {
 
-    private Evento e;
-    private RegistoEventos er;
-    private List<Evento> lsre;
-    private List<Candidatura> al;
+    private CentroEventos centroEventos;
+    private Evento eventoACandidatar;
+    private List<Evento> listaEventosDisponiveis;
+    private List<Candidatura> listaCandidaturas;
+    private Candidatura candidaturaARegistar;
 
     public RegistarCandidaturaController() {
-    }
-
-    /**
-     *
-     * @param e
-     * @param er
-     * @param lsre
-     * @param al
-     */
-    public RegistarCandidaturaController(Evento e, RegistoEventos er, List<Evento> lsre, List<Candidatura> al) {
-        this.e = e;
-        this.er = er;
-        this.lsre = lsre;
-        this.al = al;
+        this.centroEventos = CentroEventos.getCentroEventos();
     }
 
     public List<Evento> getEventosActivos() {
-        this.er = CentroEventos.getRegistoEventos();
-        lsre = er.getEventosSubmissaoPronta();
+        return listaEventosDisponiveis = centroEventos.getRegistoEventos().getEventosSubmissaoPronta();
 
-        return lsre;
     }
 
-    public void setContext(int eventoID) {
-        this.e = er.getEvento(eventoID);
+    public void setContexto(int eventoID) {
+        this.eventoACandidatar = centroEventos.getRegistoEventos().getEvento(eventoID);
     }
 
     public void setDadosCandidatura(Representante representante, Participante participante) {
-        this.al = e.getListaCandidaturasEvento();
+        listaCandidaturas = eventoACandidatar.getListaCandidaturasEvento();
 
         Candidatura a = new Candidatura();
 
         if (a.valida()) {
-            a.setIdCandidatura(al.size());
+            a.setIdCandidatura(listaCandidaturas.size());
             a.setRepresentante(representante);
             a.setParticipante(participante);
         }
 
+        this.candidaturaARegistar = a;
+
     }
 
-    public void registarCandidatura() {
-        
+    public boolean registarCandidatura() {
 
+        boolean result;
+
+        if (RegistoCandidaturas.getInstance().registaCandidatura(this.candidaturaARegistar)) {
+            result = true;
+        } else {
+            result = false;
+        }
+
+        return result;
     }
 
 }
