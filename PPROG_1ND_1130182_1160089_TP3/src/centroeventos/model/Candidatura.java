@@ -2,6 +2,7 @@
 package centroeventos.model;
 
 import Utilitarios.IdInvalidoException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  *
  * @author Daniel Dias & José Gonçalves
  */
-public class Candidatura {
+public class Candidatura implements Serializable {
   
   private int idCandidatura;
   private Representante representante;

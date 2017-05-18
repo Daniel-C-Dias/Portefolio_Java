@@ -4,12 +4,13 @@ package centroeventos.model;
 import java.util.ArrayList;
 import java.util.List;
 import Utilitarios.Data;
+import java.io.Serializable;
 
 /**
  *
  * @author Daniel Dias & José Gonçalves
  */
-public abstract class Evento {
+public abstract class Evento implements Serializable {
 
     private int idEvento;
     private String titulo;

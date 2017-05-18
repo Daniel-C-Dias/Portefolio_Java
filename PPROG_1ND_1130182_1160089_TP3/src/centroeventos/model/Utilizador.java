@@ -1,6 +1,7 @@
 
 package centroeventos.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  *
  * @author Daniel Dias & José Gonçalves
  */
-public class Utilizador {
+public class Utilizador implements Serializable{
     
     private String userName;
     private String email;
