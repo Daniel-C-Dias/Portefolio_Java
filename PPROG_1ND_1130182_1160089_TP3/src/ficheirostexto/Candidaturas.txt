@@ -1,4 +1,8 @@
-1;Carlos Alberto;Altran
-2;Francisco Gomes;Costa Cardoso;
-3;Rodrigo Mourao;Continental;
-6;Jeronimo Martins;Ramos Pinto
+Carlos Alberto;Altran
+Francisco Gomes;Costa Cardoso;
+Rodrigo Mourao;Continental;
+Jeronimo Martins;Ramos Pinto
+Ricardo Salazar;Estudio61
+Inês Gomes;Deleiote
+Sandra Afonso;Altran
+Claudio Oliveira;Continental
