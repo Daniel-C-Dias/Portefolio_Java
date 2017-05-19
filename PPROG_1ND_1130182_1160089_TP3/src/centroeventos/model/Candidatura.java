@@ -15,7 +15,7 @@ public class Candidatura implements Serializable {
   private int idCandidatura;
   private Representante representante;
   private Participante participante;
-  private int contaCandidaturas = 1;
+  private static int contaCandidaturas = 1;
 
     public Candidatura() {
         this.idCandidatura = contaCandidaturas;

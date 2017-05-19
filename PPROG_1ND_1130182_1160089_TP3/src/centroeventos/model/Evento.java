@@ -23,7 +23,7 @@ public abstract class Evento implements Serializable {
     private List<Candidatura> listaCandidaturasEvento;
     private List<AtribuicaoCandidatura> listaAtribuicoes = new ArrayList();
     private List<FAE> listaFaeEvento;
-    private int contaEvento = 1;
+    private static int contaEvento = 1;
     
     public Evento(){
         this.idEvento = contaEvento;
