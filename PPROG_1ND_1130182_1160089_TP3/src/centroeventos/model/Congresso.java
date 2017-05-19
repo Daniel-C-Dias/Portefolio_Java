@@ -14,8 +14,8 @@ public class Congresso extends Evento{
     
     public Congresso(){}
     
-    public Congresso(int idEvento, String titulo, String textoDescritivo, String local, Data dataInicio, Data dataFim, Data dataLimiteSubCandidaturas, List<Organizador> listaOrganizadoresEvento, List<Candidatura> listaCandidaturasEvento, List<FAE> listaFaeEvento, List <Workshop> listaWorkshops ) {
-        super(idEvento, titulo, textoDescritivo, local, dataInicio, dataFim, dataLimiteSubCandidaturas, listaOrganizadoresEvento, listaCandidaturasEvento, listaFaeEvento);
+    public Congresso(String titulo, String textoDescritivo, String local, Data dataInicio, Data dataFim, Data dataLimiteSubCandidaturas, List<Organizador> listaOrganizadoresEvento, List<Candidatura> listaCandidaturasEvento, List<FAE> listaFaeEvento, List <Workshop> listaWorkshops ) {
+        super(titulo, textoDescritivo, local, dataInicio, dataFim, dataLimiteSubCandidaturas, listaOrganizadoresEvento, listaCandidaturasEvento, listaFaeEvento);
         this.listaWorkshops=listaWorkshops;
     }
 

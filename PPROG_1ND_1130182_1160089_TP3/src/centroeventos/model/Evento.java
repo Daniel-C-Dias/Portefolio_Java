@@ -23,12 +23,15 @@ public abstract class Evento implements Serializable {
     private List<Candidatura> listaCandidaturasEvento;
     private List<AtribuicaoCandidatura> listaAtribuicoes = new ArrayList();
     private List<FAE> listaFaeEvento;
+    private int contaEvento = 1;
     
-    public Evento(){}
+    public Evento(){
+        this.idEvento = contaEvento;
+        contaEvento++;
+    }
     
     /**
      *
-     * @param idEvento
      * @param titulo
      * @param textoDescritivo
      * @param local
@@ -39,8 +42,8 @@ public abstract class Evento implements Serializable {
      * @param listaCandidaturasEvento
      * @param listaFaeEvento
      */
-    public Evento(int idEvento, String titulo, String textoDescritivo, String local, Data dataInicio, Data dataFim, Data dataLimiteSubCandidaturas, List<Organizador> listaOrganizadoresEvento, List<Candidatura> listaCandidaturasEvento, List<FAE> listaFaeEvento) {
-        this.idEvento = idEvento;
+    public Evento(String titulo, String textoDescritivo, String local, Data dataInicio, Data dataFim, Data dataLimiteSubCandidaturas, List<Organizador> listaOrganizadoresEvento, List<Candidatura> listaCandidaturasEvento, List<FAE> listaFaeEvento) {
+        this.idEvento = contaEvento;
         this.titulo = titulo;
         this.textoDescritivo = textoDescritivo;
         this.local = local;
@@ -50,6 +53,7 @@ public abstract class Evento implements Serializable {
         this.listaOrganizadoresEvento = listaOrganizadoresEvento;
         this.listaCandidaturasEvento = listaCandidaturasEvento;
         this.listaFaeEvento = listaFaeEvento;
+        contaEvento++;
     }
     
     /**

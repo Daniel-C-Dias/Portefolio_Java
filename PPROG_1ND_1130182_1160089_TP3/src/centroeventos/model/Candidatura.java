@@ -15,15 +15,16 @@ public class Candidatura implements Serializable {
   private int idCandidatura;
   private Representante representante;
   private Participante participante;
-  private int contaCandidaturas;
+  private int contaCandidaturas = 1;
 
     public Candidatura() {
+        this.idCandidatura = contaCandidaturas;
         contaCandidaturas++;
     }
   
   
   public Candidatura(int idCandidatura, Representante representante, Participante participante) {
-        this.idCandidatura = idCandidatura;
+        this.idCandidatura = contaCandidaturas;
         this.representante = representante;
         this.participante = participante;
         contaCandidaturas++;
