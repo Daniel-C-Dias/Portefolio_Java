@@ -93,7 +93,7 @@ public class RegistoEventos {
          List <Evento> eventosActivos = new ArrayList();
          
          for (Evento e : listaEventos ){
-             if(Data.dataAtual().isMaior(e.getDataLimiteSubCandidaturas())) {
+             if(Data.dataAtual().isMaior(e.getDataLimiteSubCandidaturas()) && Data.dataAtual().isMaior(e.getDataInicio())) {
                  continue;
              }
              else {

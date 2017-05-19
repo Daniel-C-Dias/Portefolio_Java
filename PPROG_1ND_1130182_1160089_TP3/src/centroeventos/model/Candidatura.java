@@ -23,7 +23,7 @@ public class Candidatura implements Serializable {
     }
   
   
-  public Candidatura(int idCandidatura, Representante representante, Participante participante) {
+  public Candidatura(Representante representante, Participante participante) {
         this.idCandidatura = contaCandidaturas;
         this.representante = representante;
         this.participante = participante;

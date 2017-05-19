@@ -3,6 +3,6 @@ Francisco Gomes;Costa Cardoso;
 Rodrigo Mourao;Continental;
 Jeronimo Martins;Ramos Pinto
 Ricardo Salazar;Estudio61
-Inês Gomes;Deleiote
-Sandra Afonso;Altran
-Claudio Oliveira;Continental
+Ines Gomes;Deleiote
+Claudio Oliveira;SuperMan
+Yolanda Neves;Gustavo Limas
