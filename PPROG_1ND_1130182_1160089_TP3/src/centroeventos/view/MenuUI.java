@@ -6,6 +6,7 @@
 package centroeventos.view;
 
 import centroeventos.controller.LoginController;
+import centroeventos.model.Utilizador;
 import com.sun.javafx.scene.NodeHelper;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -39,7 +40,7 @@ public class MenuUI extends JFrame {
     private JLabel textoInformativo;
     private JTextField email;
     private JPasswordField password;
-    private int userid;
+    private Utilizador userContexto;
 
     public MenuUI(String titulo) {
 
@@ -64,7 +65,7 @@ public class MenuUI extends JFrame {
         JPanel p = new JPanel(cardLayout);
         p.add(criarPainelInicial(), PAINEL_INICIAL);
 //        p.add(criarPainelUc3(), UC03);
-//        p.add(criarPainelUc4(), UC04);
+        p.add(new DecidirCandidaturaUI(userContexto), UC04);
 //        p.add(criarPainelUc5(), UC05);
         return p;
     }
@@ -75,16 +76,17 @@ public class MenuUI extends JFrame {
         JPanel pLogin = criarPainelLogin();
         pMenu = criarPanielBotoes();
 
-        pInicial.add(pHeader, BorderLayout.NORTH);
+       pInicial.add(pHeader, BorderLayout.NORTH);
        pInicial.add(pLogin, BorderLayout.CENTER);
         //pInicial.add(pMenu, BorderLayout.SOUTH);
         
         return pInicial;
     }
+    
 
     private JPanel criarPainelHeader() {
-        JLabel labelData = new JLabel("Caro utilizador, inicie sessão!", JLabel.CENTER);
         JPanel p1 = new JPanel();
+        JLabel labelData = new JLabel("Caro utilizador, inicie sessão!", JLabel.CENTER);
         p1.add(labelData);
         return p1;
     }
@@ -145,6 +147,7 @@ public class MenuUI extends JFrame {
                 if (LOGIN_CONTROLLER.fazerLogin(email.getText(), password.getPassword())) {
                     textoInformativo.setForeground(Color.green);
                     textoInformativo.setText("Bem-vindo" + LOGIN_CONTROLLER.getUserName());
+                    userContexto=LOGIN_CONTROLLER.getUserContexto();
                     pInicial.add(pMenu, BorderLayout.SOUTH);
                     
                 } else {
@@ -172,7 +175,7 @@ public class MenuUI extends JFrame {
 
     private JButton criarBotaoAtribuir() {
         JButton btn = new JButton("Atribuir Candidaturas");
-        btn.setSize(15,15);
+        btn.setPreferredSize(new Dimension(15,15));
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -185,7 +188,7 @@ public class MenuUI extends JFrame {
     
     private JButton criarBotaoDecidir() {
         JButton btn = new JButton("Decidir Candidatura");
-        btn.setSize(15,15);
+        btn.setPreferredSize(new Dimension(15,15));
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -198,7 +201,7 @@ public class MenuUI extends JFrame {
    
     private JButton criarBotaoRegistar() {
         JButton btn = new JButton("Registar Candidatura");
-        btn.setSize(15,15);
+        btn.setPreferredSize(new Dimension(15,15));
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
