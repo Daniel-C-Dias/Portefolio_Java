@@ -6,7 +6,9 @@
 package centroeventos.view;
 
 import centroeventos.controller.LoginController;
+import com.sun.javafx.scene.NodeHelper;
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -26,48 +28,70 @@ import javax.swing.JTextField;
  *
  * @author gonca
  */
-public class MenuUI extends JFrame{
-    
+public class MenuUI extends JFrame {
+
     private final LoginController LOGIN_CONTROLLER;
+    private final CardLayout cardLayout;
+    private final JPanel pCardLayout;
+    private static final String PAINEL_INICIAL = "Painel Inicial", UC03 = "Atribuir Candidaturas", UC04 = "Decidir Candidatura", UC05 = "Registar Candidatura";
+    private JPanel pInicial;
+    private JPanel pMenu;
     private JLabel textoInformativo;
-    private JTextField  email;
+    private JTextField email;
     private JPasswordField password;
     private int userid;
-    
-    
-    public MenuUI(String titulo) {
-        
-    super(titulo);
-        
-        LOGIN_CONTROLLER= new LoginController();
-        
-        JPanel pHeader = criarPainelHeader();
-        JPanel pLogin = criarPainelLogin();
-        JPanel pMenu = criarPanielBotoes();
 
-        add(pHeader, BorderLayout.NORTH);
-        add(pLogin, BorderLayout.CENTER);
-        add(pMenu, BorderLayout.SOUTH);
+    public MenuUI(String titulo) {
+
+        super(titulo);
+
+        LOGIN_CONTROLLER = new LoginController();
+        cardLayout = new CardLayout();
+        pCardLayout = criarPainelCardLayout();
+       
+        add(pCardLayout);
+        //cardLayout.show(pCardLayout, PAINEL_INICIAL);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setMinimumSize(new Dimension(getWidth(), getHeight()));
+        setLocationRelativeTo(null);
+        setResizable(false);
         setVisible(true);
     }
+
+    private JPanel criarPainelCardLayout() {
+        JPanel p = new JPanel(cardLayout);
+        p.add(criarPainelInicial(), PAINEL_INICIAL);
+//        p.add(criarPainelUc3(), UC03);
+//        p.add(criarPainelUc4(), UC04);
+//        p.add(criarPainelUc5(), UC05);
+        return p;
+    }
     
-     
-     private JPanel criarPainelHeader() {
-        JLabel labelData= new JLabel("Caro utilizador, inicie sessão!",JLabel.CENTER );
+    private JPanel criarPainelInicial(){
+        JPanel pInicial = new JPanel(new BorderLayout());
+        JPanel pHeader = criarPainelHeader();
+        JPanel pLogin = criarPainelLogin();
+        pMenu = criarPanielBotoes();
+
+        pInicial.add(pHeader, BorderLayout.NORTH);
+       pInicial.add(pLogin, BorderLayout.CENTER);
+        //pInicial.add(pMenu, BorderLayout.SOUTH);
+        
+        return pInicial;
+    }
+
+    private JPanel criarPainelHeader() {
+        JLabel labelData = new JLabel("Caro utilizador, inicie sessão!", JLabel.CENTER);
         JPanel p1 = new JPanel();
         p1.add(labelData);
         return p1;
-     }
-    
-    
-    
+    }
+
     private JPanel criarPainelLogin() {
         JPanel plog = new JPanel(new GridLayout(2, 1, 0, 10));
-        
+
         JLabel lblEmail = new JLabel("E-mail", JLabel.RIGHT);
         JLabel lblPass = new JLabel("Password", JLabel.RIGHT);
 
@@ -76,7 +100,6 @@ public class MenuUI extends JFrame{
         password = new JPasswordField(LARGURA);
         JButton btnlogin = criarBotaoLogin();
         JButton btnLimparLogin = criarLimparLogin();
-        
 
         JPanel p = new JPanel();
         final int MARGEM_SUPERIOR = 10, MARGEM_INFERIOR = 10;
@@ -89,74 +112,101 @@ public class MenuUI extends JFrame{
         p.add(password);
         p.add(btnlogin);
         p.add(btnLimparLogin);
-        
+
         plog.add(p);
-        
+
         textoInformativo = new JLabel("Exemplo Mensagem de erro", JLabel.CENTER);
         plog.add(textoInformativo);
 
         return plog;
     }
-    
-     private JPanel criarPanielBotoes() {
-        JPanel p = new JPanel(new FlowLayout());
-//        p.add(criarPainelBotao(criarBotaoAtribuir()));
-//        p.add(criarPainelBotao(criarBotaoDecidir()));
-//        p.add(criarPainelBotao(criarBotaoRegistar()));
+
+    private JPanel criarPanielBotoes() {
+        JPanel p = new JPanel(new GridLayout(3, 1, 0, 10));
+        p.add(criarPainelBotao(criarBotaoAtribuir()));
+        p.add(criarPainelBotao(criarBotaoDecidir()));
+        p.add(criarPainelBotao(criarBotaoRegistar()));
         return p;
     }
-    
-     private JPanel criarPainelBotao(JButton b) {
+
+    private JPanel criarPainelBotao(JButton b) {
         JPanel p = new JPanel();
-        ((FlowLayout)p.getLayout()).setAlignment(FlowLayout.CENTER);
         p.add(b);
         return p;
     }
-    
-    
+
     private JButton criarBotaoLogin() {
-       JButton btn = new JButton("Login");
-       btn.setToolTipText("Clique para se autenticar");
-       btn.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               
-               if(LOGIN_CONTROLLER.fazerLogin(email.getText(), password.getPassword())){
-                   
-                   textoInformativo.setForeground(Color.green);
-                   textoInformativo.setText("Bem-vindo" + LOGIN_CONTROLLER.getUserName() );
-               }
-               else{
-                   textoInformativo.setBackground(Color.red);
-                   textoInformativo.setText("E-mail ou Password errados");
-               }
-           }
-       });
-       
-       return btn;
+        JButton btn = new JButton("Login");
+        btn.setToolTipText("Clique para se autenticar");
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (LOGIN_CONTROLLER.fazerLogin(email.getText(), password.getPassword())) {
+                    textoInformativo.setForeground(Color.green);
+                    textoInformativo.setText("Bem-vindo" + LOGIN_CONTROLLER.getUserName());
+                    pInicial.add(pMenu, BorderLayout.SOUTH);
+                    
+                } else {
+                    textoInformativo.setBackground(Color.red);
+                    textoInformativo.setText("E-mail ou Password errados!");
+                }
+            }
+        });
+
+        return btn;
     }
+
     private JButton criarLimparLogin() {
-       JButton btn = new JButton("Limpar");
-       btn.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               email.setText(null);
-               password.setText(null);
-           }
-       });
-       
-       return btn;
+        JButton btn = new JButton("Limpar");
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                email.setText(null);
+                password.setText(null);
+            }
+        });
+
+        return btn;
+    }
+
+    private JButton criarBotaoAtribuir() {
+        JButton btn = new JButton("Atribuir Candidaturas");
+        btn.setSize(15,15);
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(pCardLayout, UC03);
+            }
+        });
+
+        return btn;
     }
     
-    private JButton criarBotaoAtribuir() {
-      JButton btn = new JButton("Atribuir Candidaturas");
-       btn.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-              
-           }
-       });
-       
-       return btn;
+    private JButton criarBotaoDecidir() {
+        JButton btn = new JButton("Decidir Candidatura");
+        btn.setSize(15,15);
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(pCardLayout, UC04);
+            }
+        });
+
+        return btn;
     }
+   
+    private JButton criarBotaoRegistar() {
+        JButton btn = new JButton("Registar Candidatura");
+        btn.setSize(15,15);
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(pCardLayout, UC05);
+            }
+        });
+
+        return btn;
+    }
+    
 }
