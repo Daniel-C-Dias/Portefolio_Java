@@ -29,7 +29,7 @@ public class LoginController {
         return userContexto;
     }
     
-    public boolean fazerLogin(String email, String password){
+    public boolean fazerLogin(String email, char[] password){
        
        if (validarLogin(email, password)){
            userContexto=setUserContexto(email);
@@ -42,7 +42,7 @@ public class LoginController {
         return userContexto.getUserName();
     }
     
-    private boolean validarLogin(String email, String password){
+    private boolean validarLogin(String email, char[] password){
        List<Utilizador> list = centroEventos.getRegistoUtilizadores().getListaUtilizadores();
        for (Utilizador u : list){
            if (u.validarAutenticacao(email, password)){

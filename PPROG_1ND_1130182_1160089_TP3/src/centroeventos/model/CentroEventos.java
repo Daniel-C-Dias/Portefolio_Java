@@ -22,7 +22,7 @@ public class CentroEventos {
     }
     
     public static CentroEventos getCentroEventos( ) {
-      return centroEventos;
+        return centroEventos;
    }
 
     public RegistoEventos getRegistoEventos() {
@@ -38,12 +38,5 @@ public class CentroEventos {
         this.registoEventos = (RegistoEventos) RegistoEventos.getListaEventos();
     }
 
-    
-
-    
-    
-    
-    
-    
     
 }

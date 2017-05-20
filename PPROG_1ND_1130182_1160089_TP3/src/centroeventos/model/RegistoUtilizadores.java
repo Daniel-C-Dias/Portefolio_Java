@@ -20,7 +20,8 @@ public class RegistoUtilizadores {
     }
     
     public static RegistoUtilizadores getRegistoUtilizadores( ) {
-      return registoUtilizadores;
+       carregarDados();
+       return registoUtilizadores;
    }
     
     
@@ -61,4 +62,7 @@ public class RegistoUtilizadores {
         return null;
     }
     
+    private carregarDados(){
+        
+    }
 }

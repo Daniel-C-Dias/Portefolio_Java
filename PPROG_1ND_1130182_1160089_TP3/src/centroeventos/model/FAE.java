@@ -18,14 +18,7 @@ public class FAE {
       this.uFae = u;
     }
     
-     /**
-     * @Construtor de Cópia
-     */
-    public FAE(FAE outroFAE){
-        this.uFae = outroFAE.uFae;
-    }
-    
-        /**
+    /**
      * @return the uFae
      */
     public Utilizador getuFae() {

@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -30,7 +31,7 @@ public class MenuUI extends JFrame{
     private final LoginController LOGIN_CONTROLLER;
     private JLabel textoInformativo;
     private JTextField  email;
-    private JTextField  password;
+    private JPasswordField password;
     private int userid;
     
     
@@ -57,7 +58,7 @@ public class MenuUI extends JFrame{
      
      private JPanel criarPainelHeader() {
         JLabel labelData= new JLabel("Caro utilizador, inicie sessão!",JLabel.CENTER );
-        JPanel p1 = new JPanel(new FlowLayout());
+        JPanel p1 = new JPanel();
         p1.add(labelData);
         return p1;
      }
@@ -72,8 +73,10 @@ public class MenuUI extends JFrame{
 
         final int LARGURA = 10;
         email = new JTextField(LARGURA);
-        password = new JTextField(LARGURA);
+        password = new JPasswordField(LARGURA);
         JButton btnlogin = criarBotaoLogin();
+        JButton btnLimparLogin = criarLimparLogin();
+        
 
         JPanel p = new JPanel();
         final int MARGEM_SUPERIOR = 10, MARGEM_INFERIOR = 10;
@@ -85,6 +88,7 @@ public class MenuUI extends JFrame{
         p.add(lblPass);
         p.add(password);
         p.add(btnlogin);
+        p.add(btnLimparLogin);
         
         plog.add(p);
         
@@ -117,15 +121,27 @@ public class MenuUI extends JFrame{
            @Override
            public void actionPerformed(ActionEvent e) {
                
-               if(LOGIN_CONTROLLER.fazerLogin(email.getText(), password.getText())){
+               if(LOGIN_CONTROLLER.fazerLogin(email.getText(), password.getPassword())){
                    
-                   textoInformativo.setBackground(Color.green);
+                   textoInformativo.setForeground(Color.green);
                    textoInformativo.setText("Bem-vindo" + LOGIN_CONTROLLER.getUserName() );
                }
                else{
                    textoInformativo.setBackground(Color.red);
                    textoInformativo.setText("E-mail ou Password errados");
                }
+           }
+       });
+       
+       return btn;
+    }
+    private JButton criarLimparLogin() {
+       JButton btn = new JButton("Limpar");
+       btn.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               email.setText(null);
+               password.setText(null);
            }
        });
        

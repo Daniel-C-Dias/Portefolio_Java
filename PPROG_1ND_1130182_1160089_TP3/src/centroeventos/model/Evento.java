@@ -21,11 +21,15 @@ public abstract class Evento implements Serializable {
     private Data dataLimiteSubmissaoCandidaturas;
     private List<Organizador> listaOrganizadoresEvento;
     private List<Candidatura> listaCandidaturasEvento;
-    private List<AtribuicaoCandidatura> listaAtribuicoes = new ArrayList();
+    private List<AtribuicaoCandidatura> listaAtribuicoes;
     private List<FAE> listaFaeEvento;
     private static int contaEvento = 1;
     
     public Evento(){
+        List<Organizador> listaOrganizadoresEvento= new ArrayList();
+        List<Candidatura> listaCandidaturasEvento= new ArrayList();
+        List<AtribuicaoCandidatura> listaAtribuicoes = new ArrayList();
+        List<FAE> listaFaeEvento= new ArrayList();
         this.idEvento = contaEvento;
         contaEvento++;
     }
