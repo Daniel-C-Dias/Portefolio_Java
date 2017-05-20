@@ -11,8 +11,20 @@ public class AtribuicaoCandidatura {
     private FAE fae;
     private int idCandidatura;
     private DecisaoCandidatura decisao;
+    private static int contadorId =1;
     
-
+    public AtribuicaoCandidatura(){
+        decisao = new DecisaoCandidatura();
+        idAtribuicao=contadorId++;
+    }
+   
+    public AtribuicaoCandidatura(FAE fae,int idCandidatura ){
+        this.fae=fae;
+        this.idCandidatura=idCandidatura;
+        decisao = new DecisaoCandidatura();
+        idAtribuicao=contadorId++;
+    }
+    
     /**
      * @return the idAtribuicao
      */
@@ -69,4 +81,8 @@ public class AtribuicaoCandidatura {
         this.decisao = decisao;
     }
     
+    @Override
+    public String toString(){
+        return String.format("Id %d ", idCandidatura);
+    }    
 }

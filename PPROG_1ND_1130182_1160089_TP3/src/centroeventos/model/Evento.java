@@ -252,8 +252,12 @@ public abstract class Evento implements Serializable {
         return listaAtribuicaoCandidaturasFae;
     }
 
-    @Override
+   
     public String toString() {
+        return titulo;
+    }
+    
+    public String toStringCompleto() {
         String sTxt;
         sTxt = String.format("%s;%s;%s;%s%s;\n", this.getTitulo(), this.getTextoDescritivo(), this.getDataInicio().toString(), this.getDataFim().toString(), this.getDataLimiteSubCandidaturas().toString(), this.getLocal());
 
