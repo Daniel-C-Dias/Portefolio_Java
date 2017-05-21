@@ -251,6 +251,28 @@ public abstract class Evento implements Serializable {
         return this.getListaOrganizadoresEvento().add(o);
     }
     
+    public void addFAE(Utilizador u) {
+        FAE fae = new FAE();
+        fae.setuFae(u);
+        if (validaFAE(fae)) {
+            addFAE(fae);
+        }
+    }
+
+    public boolean validaFAE(FAE f) {
+        if (f.valida()) {
+            // Introduzir as validações aqui
+            return true;
+        }
+        return false;
+    }
+
+  
+    private boolean addFAE(FAE f) {
+        return this.getListaFaeEvento().add(f);
+    }
+    
+    
    
     public List<AtribuicaoCandidatura> getListaAtribuicaoCandidaturasFAE(Utilizador uFae){
         List<AtribuicaoCandidatura> listaAtribuicaoCandidaturasFae = new ArrayList();

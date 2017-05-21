@@ -14,10 +14,11 @@ public class RegistoUtilizadores {
     
    private List<Utilizador> listaUtilizadores;
    
-   private static RegistoUtilizadores registoUtilizadores = new RegistoUtilizadores();
+   private static RegistoUtilizadores registoUtilizadores = RegistoUtilizadores.getRegistoUtilizadores();
    private static FicheiroUtilizador ficheiroUtilizador = new FicheiroUtilizador();
    private static RegistoOrganizadores registoOrganizadores = RegistoOrganizadores.getInstance();
    private static RegistoFAE registoFAE = RegistoFAE.getInstance();
+   private static RegistoEventos registoEventos = RegistoEventos.getRegistoEventos();
     
     private RegistoUtilizadores(){
         
@@ -27,12 +28,17 @@ public class RegistoUtilizadores {
        registoUtilizadores.carregarDados();
        
        for(int i = 0; i < 10 ; i++){
-           registoOrganizadores.add(registoUtilizadores.get(i));          
+           registoOrganizadores.add(registoUtilizadores.get(i));
+           registoEventos.get(i).addOrganizador(registoUtilizadores.get(i));
        }
        
        for(int i = 10; i< 20; i++){
            registoFAE.add(registoUtilizadores.get(i));
        }
+       
+       for(int j = 0 ; j<2; j++){                   
+           registoEventos.get(j).addFAE(registoUtilizadores.get(j));
+           }
        
        return registoUtilizadores;
    }

@@ -104,6 +104,14 @@ public class RegistoEventos {
          return eventosActivos;
          
     }
+     
+      public Evento get(int index) {
+        return getRegistoEventos().get(index);
+    }
+    
+     public boolean containsEvento(Evento e) {
+        return getRegistoEventos().containsEvento(e);
+    }
 
    
      
