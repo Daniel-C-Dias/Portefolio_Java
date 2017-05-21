@@ -16,7 +16,7 @@ public class CentroEventos {
     private  RegistoUtilizadores registoUtilizadores;
     private static CentroEventos centroEventos = new CentroEventos();
     private  RegistoEventos registoEventos;
-    
+   
     private CentroEventos(){
         
     }
@@ -38,5 +38,5 @@ public class CentroEventos {
         this.registoEventos = (RegistoEventos) RegistoEventos.getListaEventos();
     }
 
-    
+   
 }
