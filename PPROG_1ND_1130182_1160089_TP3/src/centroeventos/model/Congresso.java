@@ -13,7 +13,9 @@ public class Congresso extends Evento{
     
     private List <Workshop> listaWorkshops = new ArrayList();
     
-    public Congresso(){}
+    public Congresso(){
+        super();
+    }
     
     public Congresso(String titulo, String textoDescritivo, String local, Data dataInicio, Data dataFim, Data dataLimiteSubCandidaturas, List<Organizador> listaOrganizadoresEvento, List<Candidatura> listaCandidaturasEvento, List<FAE> listaFaeEvento, List <Workshop> listaWorkshops ) {
         super(titulo, textoDescritivo, local, dataInicio, dataFim, dataLimiteSubCandidaturas, listaOrganizadoresEvento, listaCandidaturasEvento, listaFaeEvento);

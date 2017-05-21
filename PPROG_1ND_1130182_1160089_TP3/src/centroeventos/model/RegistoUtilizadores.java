@@ -1,7 +1,10 @@
 
 package centroeventos.model;
 
-import Utilitarios.FicheiroUtilizador;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,41 +15,25 @@ import java.util.List;
 public class RegistoUtilizadores {
     
     
-   private List<Utilizador> listaUtilizadores;
+   private List<Utilizador> listaUtilizadores = new ArrayList();
    
-   private static RegistoUtilizadores registoUtilizadores = RegistoUtilizadores.getRegistoUtilizadores();
-   private static FicheiroUtilizador ficheiroUtilizador = new FicheiroUtilizador();
-   private static RegistoOrganizadores registoOrganizadores = RegistoOrganizadores.getInstance();
-   private static RegistoFAE registoFAE = RegistoFAE.getInstance();
-   private static RegistoEventos registoEventos = RegistoEventos.getRegistoEventos();
+   private static RegistoUtilizadores registoUtilizadores = new RegistoUtilizadores();
+   public static final String NOME_FICHEIRO_TEXTO = "Utilizadores.txt";
     
     private RegistoUtilizadores(){
         
     }
     
     public static RegistoUtilizadores getRegistoUtilizadores( ) {
-       registoUtilizadores.carregarDados();
-       
-       for(int i = 0; i < 10 ; i++){
-           registoOrganizadores.add(registoUtilizadores.get(i));
-           registoEventos.get(i).addOrganizador(registoUtilizadores.get(i));
-       }
-       
-       for(int i = 10; i< 20; i++){
-           registoFAE.add(registoUtilizadores.get(i));
-       }
-       
-       for(int j = 0 ; j<2; j++){                   
-           registoEventos.get(j).addFAE(registoUtilizadores.get(j));
-           }
-       
        return registoUtilizadores;
    }
     
-    
+    public Utilizador novoUtilizadorCompleto(String userName, String email, String password, String nome) {
+        return new Utilizador( userName, email, password, nome);
+    }
    
     public boolean add(Utilizador u) {
-        getListaUtilizadores().add(u);
+        listaUtilizadores.add(u);
         return true;
     }
 
@@ -81,7 +68,22 @@ public class RegistoUtilizadores {
         return null;
     }
     
-    private boolean carregarDados(){
-        return ficheiroUtilizador.lerTexto();
+    public boolean carregarUtilizadores(){
+        try { 
+            FileReader fileReader = new FileReader(new File(NOME_FICHEIRO_TEXTO));
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] arrayLinha = line.split(";");
+                Utilizador utilizador = novoUtilizadorCompleto(arrayLinha[0],arrayLinha[1],arrayLinha[2],arrayLinha[3]);
+                registoUtilizadores.add(utilizador);
+            }
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+        
     }
 }

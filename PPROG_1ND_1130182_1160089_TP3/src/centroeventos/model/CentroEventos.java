@@ -13,9 +13,9 @@ import centroeventos.model.Evento;
 public class CentroEventos {
     
     private  List <AlgoritmoAtribuicao> listaAlgoritmos = new ArrayList();
-    private  RegistoUtilizadores registoUtilizadores;
+    private  RegistoUtilizadores registoUtilizadores= RegistoUtilizadores.getRegistoUtilizadores();
     private static CentroEventos centroEventos = new CentroEventos();
-    private  RegistoEventos registoEventos;
+    private  RegistoEventos registoEventos = RegistoEventos.getRegistoEventos();
     
     private CentroEventos(){
         

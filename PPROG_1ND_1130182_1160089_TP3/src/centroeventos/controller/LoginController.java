@@ -42,6 +42,11 @@ public class LoginController {
         return userContexto.getUserName();
     }
     
+    public boolean carregarDados(){
+        return centroEventos.getRegistoEventos().carregarEventos()
+            && centroEventos.getRegistoUtilizadores().carregarUtilizadores();
+    }
+    
     private boolean validarLogin(String email, char[] password){
        List<Utilizador> list = centroEventos.getRegistoUtilizadores().getListaUtilizadores();
        String pass= new String (password);

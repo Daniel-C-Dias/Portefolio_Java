@@ -15,6 +15,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -41,11 +42,17 @@ public class MenuUI extends JFrame {
     private JPasswordField password;
     private Utilizador userContexto;
 
+    {
+        LOGIN_CONTROLLER = new LoginController();
+        LOGIN_CONTROLLER.carregarDados();
+    }
+    
+    
+    
     public MenuUI(String titulo) {
 
         super(titulo);
 
-        LOGIN_CONTROLLER = new LoginController();
         cardLayout = new CardLayout();
         pCardLayout = criarPainelCardLayout();
        
@@ -64,7 +71,7 @@ public class MenuUI extends JFrame {
         JPanel p = new JPanel(cardLayout);
         p.add(criarPainelInicial(), PAINEL_INICIAL);
 //        p.add(criarPainelUc3(), UC03);
-//        p.add(new DecidirCandidaturaUI(userContexto), UC04);
+        p.add(new DecidirCandidaturaUI(userContexto), UC04);
 //        p.add(criarPainelUc5(), UC05);
         return p;
     }
@@ -77,7 +84,8 @@ public class MenuUI extends JFrame {
 
        pInicial.add(pHeader, BorderLayout.NORTH);
        pInicial.add(pLogin, BorderLayout.CENTER);
-        //pInicial.add(pMenu, BorderLayout.SOUTH);
+       pInicial.add(pMenu, BorderLayout.SOUTH);
+       pMenu.setVisible(false);
         
         return pInicial;
     }
@@ -116,14 +124,14 @@ public class MenuUI extends JFrame {
 
         plog.add(p);
 
-        textoInformativo = new JLabel("Exemplo Mensagem de erro", JLabel.CENTER);
+        textoInformativo = new JLabel("Projeto: Centro de Eventos", JLabel.CENTER);
         plog.add(textoInformativo);
 
         return plog;
     }
 
     private JPanel criarPanielBotoes() {
-        JPanel p = new JPanel(new GridLayout(3, 1, 0, 10));
+        JPanel p = new JPanel(new GridLayout(3, 1, 10, 10));
         p.add(criarPainelBotao(criarBotaoAtribuir()));
         p.add(criarPainelBotao(criarBotaoDecidir()));
         p.add(criarPainelBotao(criarBotaoRegistar()));
@@ -145,12 +153,14 @@ public class MenuUI extends JFrame {
 
                 if (LOGIN_CONTROLLER.fazerLogin(email.getText(), password.getPassword())) {
                     textoInformativo.setForeground(Color.green);
-                    textoInformativo.setText("Bem-vindo" + LOGIN_CONTROLLER.getUserName());
+                    textoInformativo.setText("Bem-vindo " + LOGIN_CONTROLLER.getUserName());
                     userContexto=LOGIN_CONTROLLER.getUserContexto();
-                    pInicial.add(pMenu, BorderLayout.SOUTH);
+                    pMenu.setVisible(true);
+                    pMenu.revalidate();
+                    pack();
                     
                 } else {
-                    textoInformativo.setBackground(Color.red);
+                    textoInformativo.setForeground(Color.red);
                     textoInformativo.setText("E-mail ou Password errados!");
                 }
             }
@@ -174,7 +184,7 @@ public class MenuUI extends JFrame {
 
     private JButton criarBotaoAtribuir() {
         JButton btn = new JButton("Atribuir Candidaturas");
-        btn.setPreferredSize(new Dimension(15,15));
+        btn.setPreferredSize(new Dimension(200,50));
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -187,7 +197,7 @@ public class MenuUI extends JFrame {
     
     private JButton criarBotaoDecidir() {
         JButton btn = new JButton("Decidir Candidatura");
-        btn.setPreferredSize(new Dimension(15,15));
+        btn.setPreferredSize(new Dimension(200,50));
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -200,7 +210,7 @@ public class MenuUI extends JFrame {
    
     private JButton criarBotaoRegistar() {
         JButton btn = new JButton("Registar Candidatura");
-        btn.setPreferredSize(new Dimension(15,15));
+        btn.setPreferredSize(new Dimension(200,50));
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

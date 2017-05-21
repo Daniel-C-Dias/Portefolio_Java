@@ -14,7 +14,9 @@ import java.util.List;
  */
 public class Exposicao extends Evento{
     
-    public Exposicao(){}
+    public Exposicao(){
+        super();
+    }
     
     public Exposicao(String titulo, String textoDescritivo, String local, Data dataInicio, Data dataFim, Data dataLimiteSubCandidaturas, List<Organizador> listaOrganizadoresEvento, List<Candidatura> listaCandidaturasEvento, List<FAE> listaFaeEvento) {
         super(titulo, textoDescritivo, local, dataInicio, dataFim, dataLimiteSubCandidaturas, listaOrganizadoresEvento, listaCandidaturasEvento, listaFaeEvento);
