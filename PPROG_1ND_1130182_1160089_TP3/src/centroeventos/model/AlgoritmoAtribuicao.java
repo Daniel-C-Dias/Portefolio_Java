@@ -8,4 +8,7 @@ package centroeventos.model;
 public interface AlgoritmoAtribuicao {
     
     public void atribui();
+    
+    public boolean valida();
+    
 }

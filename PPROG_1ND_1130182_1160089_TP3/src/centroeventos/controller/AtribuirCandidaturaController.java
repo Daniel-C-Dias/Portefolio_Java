@@ -1,19 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package centroeventos.controller;
 
 import centroeventos.model.CentroEventos;
+import java.util.List;
+import centroeventos.model.Evento;
+import centroeventos.model.Utilizador;
 
 /**
  *
- * @author gonca
+ * @author Daniel Dias & José Gonçalves
  */
 public class AtribuirCandidaturaController {
     
      private final CentroEventos centroEventos;
+     private static Evento evento;
     
 
     public AtribuirCandidaturaController()
@@ -21,6 +21,13 @@ public class AtribuirCandidaturaController {
         this.centroEventos= CentroEventos.getCentroEventos();
     }
     
+    public List<Evento> getEventosActivosOrganizador(Utilizador organizador){
+        return centroEventos.getRegistoEventos().getlistaEventosDeOrganizador(organizador);
+    }
+
+    public static void setEvento(Evento evento) {
+        AtribuirCandidaturaController.evento = evento;
+    }
     
     
     
