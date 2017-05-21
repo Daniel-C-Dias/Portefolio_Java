@@ -10,22 +10,19 @@ import java.util.List;
  */
 public class RegistoCandidaturas {
     
-    private List<Candidatura> listaCandidaturas;
-    private static RegistoCandidaturas registoCandidaturas = null;
+    private static final RegistoCandidaturas registoCandidaturas = new RegistoCandidaturas();
+    private List<Candidatura> listaCandidaturas = new ArrayList();
     
     private RegistoCandidaturas(){
         
     }
     
     /**
-     *Isto tudo serve para garantir que a classe torna-se um singleton, existindo apenas uma instancia unica da lista que é o Registo de Candidaturas
+     *Garante que apenas exista uma instancia unica de Registo de Candidaturas
      * 
      * @return registoCandidaturas
      */
     public static RegistoCandidaturas getInstance() {
-      if(registoCandidaturas == null) {
-         registoCandidaturas = new RegistoCandidaturas();
-      }
       return registoCandidaturas;
     }
     

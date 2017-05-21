@@ -44,8 +44,9 @@ public class LoginController {
     
     private boolean validarLogin(String email, char[] password){
        List<Utilizador> list = centroEventos.getRegistoUtilizadores().getListaUtilizadores();
+       String pass= new String (password);
        for (Utilizador u : list){
-           if (u.validarAutenticacao(email, password)){
+           if (u.validarAutenticacao(email, pass)){
                return true;
            }
     }

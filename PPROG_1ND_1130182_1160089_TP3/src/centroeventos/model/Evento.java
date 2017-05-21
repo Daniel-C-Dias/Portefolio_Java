@@ -68,6 +68,9 @@ public abstract class Evento implements Serializable {
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.dataLimiteSubmissaoCandidaturas = dataLimiteSubCandidaturas;
+        this.listaOrganizadoresEvento = new ArrayList();
+        this.listaCandidaturasEvento = new ArrayList();
+        this.listaFaeEvento = new ArrayList();
         contaEvento++;
     }
     
