@@ -61,7 +61,7 @@ public class Utilizador implements Serializable{
         this.userName = userName;
     }
     
-    public boolean validarAutenticacao(String email, char[] password){
+    public boolean validarAutenticacao(String email, String password){
        return (this.email.equals(email)&& this.password.equals(password));
     }
     

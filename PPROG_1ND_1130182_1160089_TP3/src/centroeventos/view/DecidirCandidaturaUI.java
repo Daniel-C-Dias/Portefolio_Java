@@ -135,9 +135,9 @@ public class DecidirCandidaturaUI extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                int id = (Integer) cbCandidaturas.getSelectedItem();
-               candidaturaSelecionada= // chamada ao controller 
-               p3= criarP3();
-               p3.revalidate(); //PERCEBER MELHOR
+               //candidaturaSelecionada= // chamada ao controller 
+               //p3= criarP3();
+              //p3.revalidate(); //PERCEBER MELHOR
             }
         });
         

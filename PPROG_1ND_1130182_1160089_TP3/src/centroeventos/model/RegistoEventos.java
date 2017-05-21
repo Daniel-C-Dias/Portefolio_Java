@@ -10,12 +10,10 @@ import Utilitarios.*;
  * @author Daniel Dias & José Gonçalves
  */
 public class RegistoEventos {
-
-    private static List<Evento> listaEventos;
-    private List<Evento> listaEventoOrganizador;
-   
     
-    private static RegistoEventos registoEventos = new RegistoEventos();
+    private static final RegistoEventos registoEventos = new RegistoEventos();
+    private static final List<Evento> listaEventos = new ArrayList();
+    private List<Evento> listaEventoOrganizador;
     
     private RegistoEventos(){
         
