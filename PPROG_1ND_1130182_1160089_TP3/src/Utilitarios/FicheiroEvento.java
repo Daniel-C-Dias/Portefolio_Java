@@ -2,7 +2,9 @@
 package Utilitarios;
 
 
+import centroeventos.model.Congresso;
 import centroeventos.model.Evento;
+import centroeventos.model.Exposicao;
 import centroeventos.model.RegistoEventos;
 import centroeventos.view.MenuUI;
 import java.io.BufferedReader;
@@ -25,6 +27,8 @@ public class FicheiroEvento {
     
     public static final String NOME_FICHEIRO_BINARIO = "Eventos.bin";
     public static final String NOME_FICHEIRO_TEXTO = "Eventos.txt";
+    
+    public static int exposicaoOuCongresso = 0; 
 
     public FicheiroEvento() {
     }
@@ -68,11 +72,19 @@ public class FicheiroEvento {
             StringBuffer stringBuffer = new StringBuffer();
             String line;
             while ((line = bufferedReader.readLine()) != null) {
+                exposicaoOuCongresso++;
                 stringBuffer.append(line);
                 String[] arrayLinha = stringBuffer.toString().split(";");
-                Evento evento = new Evento(arrayLinha[0],arrayLinha[1],arrayLinha[2],extrairData(arrayLinha[3]),extrairData(arrayLinha[4]), extrairData(arrayLinha[5]));
+                if(exposicaoOuCongresso % 2 == 0){
+                Evento evento = new Exposicao(arrayLinha[0],arrayLinha[1],arrayLinha[2],extrairData(arrayLinha[3]),extrairData(arrayLinha[4]), extrairData(arrayLinha[5]));
                 registoEvento.registaEvento(evento);
                 stringBuffer.append("\n");
+                }
+                else {
+                    Evento evento = new Congresso(arrayLinha[0],arrayLinha[1],arrayLinha[2],extrairData(arrayLinha[3]),extrairData(arrayLinha[4]), extrairData(arrayLinha[5]));
+                registoEvento.registaEvento(evento);
+                stringBuffer.append("\n");
+                }
             }
             fileReader.close();
         } catch (IOException e) {

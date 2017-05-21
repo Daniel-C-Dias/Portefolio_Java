@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Daniel Dias & José GOnçalves
  */
-public class Workshop {
+public class Workshop  {
      
     private List <String> listaTemasWorkshop = new ArrayList();
      private List <String> listaPeritosWorkshop = new ArrayList();
