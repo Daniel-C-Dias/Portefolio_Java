@@ -13,6 +13,12 @@ public class Representante {
     public Representante()
     {
     }
+
+    public Representante(Utilizador uRepresentante) {
+        this.uRepresentante = uRepresentante;
+    }
+    
+
   
   
     public void setUtilizador(Utilizador u)

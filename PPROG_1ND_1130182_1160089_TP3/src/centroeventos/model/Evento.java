@@ -60,6 +60,17 @@ public abstract class Evento implements Serializable {
         contaEvento++;
     }
     
+    public Evento(String titulo, String textoDescritivo, String local, Data dataInicio, Data dataFim, Data dataLimiteSubCandidaturas){
+        this.idEvento = contaEvento;
+        this.titulo = titulo;
+        this.textoDescritivo = textoDescritivo;
+        this.local = local;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.dataLimiteSubmissaoCandidaturas = dataLimiteSubCandidaturas;
+        contaEvento++;
+    }
+    
     /**
      * @return the idEvento
      */

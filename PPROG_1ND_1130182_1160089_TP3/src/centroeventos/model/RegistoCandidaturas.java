@@ -43,11 +43,23 @@ public class RegistoCandidaturas {
     }
     
     
-    
-    private boolean addCandidatura(Candidatura c) {
-        listaCandidaturas.add(c);
+    public boolean add(Candidatura c) {
+        getInstance().add(c);
         return true;
     }
+
+    public Utilizador get(int index) {
+        return getInstance().get(index);
+    }
+    
+     public boolean containsCandidatura(Candidatura c) {
+        return getInstance().containsCandidatura(c);
+    }
+    
+//    private boolean addCandidatura(Candidatura c) {
+//        listaCandidaturas.add(c);
+//        return true;
+//    }
     
     public boolean validaCandidatura(Candidatura c)
     {
@@ -57,7 +69,7 @@ public class RegistoCandidaturas {
     public boolean registaCandidatura(Candidatura c)
     {
         if( validaCandidatura(c) )
-            return addCandidatura(c);
+            return add(c);
         else
             return false;
     }

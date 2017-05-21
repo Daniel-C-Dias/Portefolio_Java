@@ -13,6 +13,10 @@ public class Organizador {
     public Organizador()
     {
     }
+
+    public Organizador(Utilizador uOrganizador) {
+        this.uOrganizador = uOrganizador;
+    }
     
     
      /**

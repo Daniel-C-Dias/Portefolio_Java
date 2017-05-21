@@ -13,6 +13,12 @@ public class Participante {
     public Participante()
     {
     }
+
+    public Participante(Utilizador uParticipante) {
+        this.uParticipante = uParticipante;
+    }
+    
+    
   
     
     public void setUtilizador(Utilizador u)

@@ -70,6 +70,20 @@ public class Utilizador implements Serializable{
     {
         return "Utilizador: " + this.nome + " - " + this.email;
     }
+
+    @Override
+    public boolean equals(Object outroObjeto) {
+        if (!super.equals(outroObjeto)) {
+            return false;
+        }
+        Utilizador u = (Utilizador) outroObjeto;
+        return this.userName == u.getUserName() && 
+                this.email == u.getEmail() && 
+                this.password == u.getPassword() &&
+                this.nome == u.getNome();
+    }
+    
+    
 }
 
 

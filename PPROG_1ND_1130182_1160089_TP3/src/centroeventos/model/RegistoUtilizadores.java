@@ -1,6 +1,7 @@
 
 package centroeventos.model;
 
+import Utilitarios.FicheiroUtilizador;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,13 +15,25 @@ public class RegistoUtilizadores {
    private List<Utilizador> listaUtilizadores;
    
    private static RegistoUtilizadores registoUtilizadores = new RegistoUtilizadores();
+   private static FicheiroUtilizador ficheiroUtilizador = new FicheiroUtilizador();
+   private static RegistoOrganizadores registoOrganizadores = RegistoOrganizadores.getInstance();
+   private static RegistoFAE registoFAE = RegistoFAE.getInstance();
     
     private RegistoUtilizadores(){
         
     }
     
     public static RegistoUtilizadores getRegistoUtilizadores( ) {
-       carregarDados();
+       registoUtilizadores.carregarDados();
+       
+       for(int i = 0; i < 10 ; i++){
+           registoOrganizadores.add(registoUtilizadores.get(i));          
+       }
+       
+       for(int i = 10; i< 20; i++){
+           registoFAE.add(registoUtilizadores.get(i));
+       }
+       
        return registoUtilizadores;
    }
     
@@ -62,7 +75,7 @@ public class RegistoUtilizadores {
         return null;
     }
     
-    private carregarDados(){
-        
+    private boolean carregarDados(){
+        return ficheiroUtilizador.lerTexto();
     }
 }

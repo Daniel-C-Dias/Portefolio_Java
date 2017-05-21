@@ -2,6 +2,8 @@ package Utilitarios;
 
 import centroeventos.model.Candidatura;
 import centroeventos.model.Participante;
+import centroeventos.model.RegistoCandidaturas;
+import centroeventos.model.RegistoUtilizadores;
 import centroeventos.model.Representante;
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,6 +19,12 @@ import java.io.ObjectOutputStream;
  * @author Daniel Dias & José Gonçalves
  */
 public class FicheiroCandidatura {
+
+    public RegistoUtilizadores registoUtilizadores = RegistoUtilizadores.getRegistoUtilizadores();
+    public RegistoCandidaturas registoCandidaturas = RegistoCandidaturas.getInstance();
+
+    public Participante participante;
+    public Representante representante;
 
     public static final String NOME_FICHEIRO_BINARIO = "Candidaturas.bin";
     public static final String NOME_FICHEIRO_TEXTO = "Candidaturas.txt";
@@ -65,7 +73,17 @@ public class FicheiroCandidatura {
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuffer.append(line);
                 String[] arrayLinha = stringBuffer.toString().split(";");
-                Candidatura candidatura = new Candidatura(new Representante(arrayLinha[0]), new Participante(arrayLinha[1])); //tenho que arranjar aqui forma de verificar a que utilizador o representante e participante pertencem 
+
+                for (int i = 0; i < registoUtilizadores.getListaUtilizadores().size(); i++) {
+                    if (registoUtilizadores.get(i).getNome().equalsIgnoreCase(arrayLinha[0])) {
+                        participante = new Participante(registoUtilizadores.get(i));
+                    } else if (registoUtilizadores.get(i).getNome().equalsIgnoreCase(arrayLinha[1])) {
+                        representante = new Representante(registoUtilizadores.get(i));
+                    }
+                }
+
+                Candidatura candidatura = new Candidatura(representante, participante);
+                registoCandidaturas.add(candidatura);
                 stringBuffer.append("\n");
             }
             fileReader.close();

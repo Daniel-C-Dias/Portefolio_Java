@@ -1,5 +1,6 @@
 ddias;danielcanastro@gmail.com;ddias123;Daniel Dias
 jgoncalves;josegoncalves@gmail.com;jgoncalves123;Jose Goncalves
+jaleatorio;jaleatorio@gmail.com;jaleatorio123; Jorge Aleatorio
 rjoaquinito;ricardo.joaquinito@altran.com;rjoaquinito123;Ricardo Joaquinito
 jesteves;jose.esteves@altran.com;jesteves123; Jose Esteves
 ptmmmargarido;ptmmmargarido@gmail.com;ptmmmargarido123; Pedro Margarido
@@ -11,6 +12,12 @@ psilva;pedro.silva@altran.com;psilva123;Pedro Silva
 aribeiro;adriana.ribeiro@altran.com;aribeiro123;Adriana Ribeiro
 amonteiro;andre.monteiro@altran.com;amonteiro123;Andre Monteiro
 lfdias;luisfilipe.dias@altran.com;lfdias123;Luis Filipe Dias
+asdias;asdias@gmail.com;asdias123;Antonio da Silva Dias
+ecanastro;ecanastro@gmail.com;ecanastro123;Emilia Canastro
+rmatosinhos;rmatosinhos@gmail.com;rmatosinhos123;Rita Matosinhos
+sgarrido;sgarrido@gmail.com;sgarrido123;Sara Garrido
+rpereira;rpereira@gmail.com;rpereira123;Rita Pereira
+cmiller;cmiller@gmail.com;cmiller123;Courtney Miller
 calberto;calberto@gmail.com;calber123;Carlos Alberto;
 altran;altran@gmail.com;altran123;Altran
 fgomes;fgomes@gmail.com;fgomes123;Francisco Gomes
