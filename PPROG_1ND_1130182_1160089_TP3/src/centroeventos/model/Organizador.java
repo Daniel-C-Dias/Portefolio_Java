@@ -37,6 +37,17 @@ public class Organizador {
         // Introduzir as validações aqui
         return true;
     }
+
+    @Override
+    public boolean equals(Object outroObjeto) {
+        if (!super.equals(outroObjeto)) {
+            return false;
+        }
+        Organizador o = (Organizador) outroObjeto;
+        return this.uOrganizador == o.getuOrganizador();
+    }
+    
+    
  
    
  @Override

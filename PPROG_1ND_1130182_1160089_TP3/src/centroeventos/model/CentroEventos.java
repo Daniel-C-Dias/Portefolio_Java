@@ -38,5 +38,5 @@ public class CentroEventos {
         this.registoEventos = (RegistoEventos) RegistoEventos.getListaEventos();
     }
 
-    
+   
 }

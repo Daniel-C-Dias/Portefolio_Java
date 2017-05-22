@@ -51,8 +51,23 @@ public class RegistoEventos {
         }
         return listaEventosFae;
     }
-
-    public Evento novaExposicao() {
+    
+    
+    public List<Evento> getlistaEventosDeOrganizador(Utilizador organizador){
+        List<Evento> listaEventosOrganizador = new ArrayList();
+        for (Evento e : listaEventos ){
+            List<Organizador> listaOrganizador= e.getListaOrganizadoresEvento();
+            for (Organizador o : listaOrganizador){
+                if (o.getuOrganizador().equals(organizador)){
+                    listaEventosOrganizador.add(e);
+                }
+            }
+        }
+        return listaEventosOrganizador;
+    }
+    
+    public Evento novaExposicao()
+    {
         return new Exposicao();
     }
     

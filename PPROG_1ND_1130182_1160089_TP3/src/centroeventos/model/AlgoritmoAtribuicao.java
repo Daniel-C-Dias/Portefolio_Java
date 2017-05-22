@@ -1,11 +1,14 @@
-
 package centroeventos.model;
+
+import java.util.List;
 
 /**
  *
  * @author Daniel Dias & José Gonçalves
  */
 public interface AlgoritmoAtribuicao {
-    
-    public void atribui();
+
+    public List<AtribuicaoCandidatura> atribui();
+
+
 }
