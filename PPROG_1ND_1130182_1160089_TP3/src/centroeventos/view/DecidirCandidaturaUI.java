@@ -34,6 +34,7 @@ public class DecidirCandidaturaUI extends JPanel {
     private JPanel p2;
     private JPanel p3;
     private final DecidirCandidaturaController DECIDIR_CONTROLLER;
+    private List<Evento> listaEventosFae;
     
     public DecidirCandidaturaUI(Utilizador userContexto){
        
@@ -96,19 +97,18 @@ public class DecidirCandidaturaUI extends JPanel {
     }
     
     private JComboBox criarCbEventos(){
-        List<Evento> listaEventosFae =  DECIDIR_CONTROLLER.getListaEventosFAE(userContexto);
-//        ArrayList<String> listaEventosFaeString = new ArrayList();
-//        for (Evento e : listaEventosFae){
-//            listaEventosFaeString.add(e.getTitulo());
-//        }
-//        String[] arrayListaEventosFaeString = listaEventosFaeString.toArray(new String[0]);
+        listaEventosFae =  DECIDIR_CONTROLLER.getListaEventosFAE(userContexto);
+        ArrayList<String> listaEventosFaeString = new ArrayList();
+        for (Evento e : listaEventosFae){
+            listaEventosFaeString.add(e.getTitulo());
+        }
         
-        Evento[] arrayListaEventosFaeString = listaEventosFae.toArray(new Evento[0]);
+        String[] arrayListaEventosFaeString = listaEventosFaeString.toArray(new String[0]);
         
         return new JComboBox(arrayListaEventosFaeString);
     }
     
-    private JComboBox criarCbCandidaturas(){
+    private JComboBox criarCbCandidaturas(){ // ESTOU NESTA LOGICA!!!!!!!!!!!!!!
         List <AtribuicaoCandidatura> listaCandidaturasEv = DECIDIR_CONTROLLER.getListaCandidaturasFAE(userContexto, eventoSelecionado.getIdEvento());
         AtribuicaoCandidatura[] arrayListaCandidaturasEv = listaCandidaturasEv.toArray(new AtribuicaoCandidatura[0]);
         
@@ -120,7 +120,11 @@ public class DecidirCandidaturaUI extends JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               eventoSelecionado= (Evento) cbEventos.getSelectedItem();
+               for (Evento ev : listaEventosFae){
+                  if (ev.getTitulo().equals(cbEventos.getSelectedItem())) {
+                      eventoSelecionado= ev;
+                  }
+                }
                p2= criarP2();
                p2.revalidate(); //PERCEBER MELHOR
             }

@@ -18,7 +18,7 @@ public class RegistoUtilizadores {
    private List<Utilizador> listaUtilizadores = new ArrayList();
    
    private static RegistoUtilizadores registoUtilizadores = new RegistoUtilizadores();
-   public static final String NOME_FICHEIRO_TEXTO = "Utilizadores.txt";
+   private static final String NOME_FICHEIRO_TEXTO = "Utilizadores.txt";
     
     private RegistoUtilizadores(){
         
@@ -76,6 +76,7 @@ public class RegistoUtilizadores {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] arrayLinha = line.split(";");
                 Utilizador utilizador = novoUtilizadorCompleto(arrayLinha[0],arrayLinha[1],arrayLinha[2],arrayLinha[3]);
+                System.out.println(arrayLinha[0]+arrayLinha[1]+arrayLinha[2]+arrayLinha[3]);
                 registoUtilizadores.add(utilizador);
             }
             fileReader.close();

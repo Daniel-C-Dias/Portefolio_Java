@@ -76,7 +76,7 @@ public class FicheiroCandidatura {
 
                 for (int i = 0; i < registoUtilizadores.getListaUtilizadores().size(); i++) {
                     if (registoUtilizadores.get(i).getNome().equalsIgnoreCase(arrayLinha[0])) {
-                        participante = new Participante(registoUtilizadores.get(i));
+                        //participante = new Participante(registoUtilizadores.get(i));
                     } else if (registoUtilizadores.get(i).getNome().equalsIgnoreCase(arrayLinha[1])) {
                         representante = new Representante(registoUtilizadores.get(i));
                     }

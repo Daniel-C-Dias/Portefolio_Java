@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
  *
@@ -19,7 +18,8 @@ public class RegistoEventos {
     private static final RegistoEventos registoEventos = new RegistoEventos();
     private static final List<Evento> listaEventos = new ArrayList();
     private List<Evento> listaEventoOrganizador;
-    public static final String NOME_FICHEIRO_TEXTO = "Eventos.txt";
+    private static final String NOME_FICHEIRO_TEXTO = "Eventos.txt";
+    
 
     private RegistoEventos() {
 
@@ -38,13 +38,13 @@ public class RegistoEventos {
         return true;
     }
 
-    // validar também que a data é inferior à data inicio do evento!! 
+    // valida também que a data atual é inferior à data inicio do evento e superior à data de submissão de candidaturas
     public List<Evento> getlistaEventosDeFae(Utilizador fae) {
         List<Evento> listaEventosFae = new ArrayList();
         for (Evento e : listaEventos) {
             List<FAE> listaFae = e.getListaFaeEvento();
             for (FAE f : listaFae) {
-                if (f.getuFae().equals(fae)) {
+                if (f.getuFae().equals(fae) && e.getDataInicio().isMaior(Data.dataAtual()) && Data.dataAtual().isMaior(e.getDataLimiteSubCandidaturas())) {
                     listaEventosFae.add(e);
                 }
             }
