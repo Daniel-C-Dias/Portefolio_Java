@@ -45,7 +45,9 @@ public class LoginController {
     public boolean carregarDados(){
         return centroEventos.getRegistoEventos().carregarEventos()
             && centroEventos.getRegistoUtilizadores().carregarUtilizadores()
-            && centroEventos.carregarRoles();
+            && centroEventos.carregarRoles()
+            && centroEventos.associarRolesAEventos();
+            //&&criarCandidaturas;
     }
     
     private boolean validarLogin(String email, char[] password){

@@ -71,7 +71,7 @@ public class MenuUI extends JFrame {
         JPanel p = new JPanel(cardLayout);
         p.add(criarPainelInicial(), PAINEL_INICIAL);
 //        p.add(criarPainelUc3(), UC03);
-        p.add(new DecidirCandidaturaUI(userContexto), UC04);
+//        p.add(new DecidirCandidaturaUI(userContexto), UC04);
 //        p.add(criarPainelUc5(), UC05);
         return p;
     }
@@ -202,6 +202,7 @@ public class MenuUI extends JFrame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                pCardLayout.add(new DecidirCandidaturaUI(userContexto), UC04);
                 cardLayout.show(pCardLayout, UC04);
             }
         });

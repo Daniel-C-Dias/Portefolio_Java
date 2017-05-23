@@ -8,16 +8,14 @@ package centroeventos.model;
 public class Participante {
     
      private Utilizador uParticipante;
-     private String nome;
      
   
     public Participante()
     {
     }
 
-    public Participante(Utilizador uParticipante, String nome) {
+    public Participante(Utilizador uParticipante) {
         this.uParticipante = uParticipante;
-        this.nome=nome;
     }
     
     

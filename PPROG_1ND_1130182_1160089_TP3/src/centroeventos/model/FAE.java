@@ -8,16 +8,14 @@ package centroeventos.model;
 public class FAE {
     
     private Utilizador uFae;
-    private String nome;
     
     public FAE(){
       
     }
     
-    public FAE(Utilizador u, String nome)
+    public FAE(Utilizador u)
     {
       this.uFae = u;
-      this.nome=nome;
     }
     
     /**

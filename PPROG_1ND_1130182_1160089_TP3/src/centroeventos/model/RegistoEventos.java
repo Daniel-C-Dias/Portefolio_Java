@@ -15,10 +15,10 @@ import java.io.IOException;
  */
 public class RegistoEventos {
 
-    private static final RegistoEventos registoEventos = new RegistoEventos();
-    private static final List<Evento> listaEventos = new ArrayList();
+    private static RegistoEventos registoEventos = new RegistoEventos();
+    private final List<Evento> listaEventos = new ArrayList();
     private List<Evento> listaEventoOrganizador;
-    private static final String NOME_FICHEIRO_TEXTO = "Eventos.txt";
+    private final String NOME_FICHEIRO_TEXTO = "Eventos.txt";
     
 
     private RegistoEventos() {
@@ -29,7 +29,7 @@ public class RegistoEventos {
         return registoEventos;
     }
 
-    public static List<Evento> getListaEventos() {
+    public  List<Evento> getListaEventos() {
         return listaEventos;
     }
 
@@ -114,15 +114,12 @@ public class RegistoEventos {
         List<Evento> eventosActivos = new ArrayList();
 
         for (Evento e : listaEventos) {
-            if (Data.dataAtual().isMaior(e.getDataLimiteSubCandidaturas()) && Data.dataAtual().isMaior(e.getDataInicio())) {
-                continue;
-            } else {
+            if (e.getDataLimiteSubCandidaturas().isMaior(Data.dataAtual())) {  
                 eventosActivos.add(e);
             }
         }
 
         return eventosActivos;
-
     }
 
     public boolean containsEvento(Evento e) {

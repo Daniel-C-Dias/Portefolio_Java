@@ -22,6 +22,7 @@ public class CentroEventos {
     private List<FAE> listaFae = new ArrayList();
     private List<Organizador> listaOrganizadores = new ArrayList();
     private List<Participante> listaParticipantes = new ArrayList();
+    private List<Representante> listaRepresentantes = new ArrayList();
     private static final String NOME_FICHEIRO_TEXTO = "Utilizadores.txt";
 
     private CentroEventos() {
@@ -40,10 +41,7 @@ public class CentroEventos {
         return registoUtilizadores;
     }
 
-    public void setRegistoEventos(RegistoEventos registoEventos) {
-        this.registoEventos = (RegistoEventos) RegistoEventos.getListaEventos();
-    }
-
+ 
     /**
      * @return the listaFae
      */
@@ -98,16 +96,20 @@ public class CentroEventos {
         listaParticipantes.add(par);
     }
 
-    public FAE novoFAE(Utilizador uFAE, String nome) {
-        return new FAE(uFAE, nome);
+    public FAE novoFAE(Utilizador uFAE) {
+        return new FAE(uFAE);
     }
     
-    public Organizador novoOrganizador(Utilizador uOrganizador, String nome) {
-        return new Organizador(uOrganizador, nome);
+    public Representante novoRepresentante(Utilizador uRepresentante) {
+        return new Representante(uRepresentante);
+    }
+    
+    public Organizador novoOrganizador(Utilizador uOrganizador) {
+        return new Organizador(uOrganizador);
     }
 
-    public Participante novoParticipante(Utilizador uParticipante, String nome) {
-        return new Participante(uParticipante, nome);
+    public Participante novoParticipante(Utilizador uParticipante) {
+        return new Participante(uParticipante);
     }
 
     public boolean carregarRoles() {
@@ -118,24 +120,28 @@ public class CentroEventos {
             int i =0;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] arrayLinha = line.split(";");
-                //int i = Integer.parseInt(arrayLinha[0]);
-                i++;
+                
                 if (i < 5) {
                     Utilizador utilizador = getRegistoUtilizadores().getUtilizadorPorEmail(arrayLinha[1]);
-                    FAE f = novoFAE(utilizador,arrayLinha[3]);
+                    FAE f = novoFAE(utilizador);
                     listaFae.add(f);
                 }
                 else if(i<10){
                     Utilizador utilizador = getRegistoUtilizadores().getUtilizadorPorEmail(arrayLinha[1]);
-                    Organizador org = novoOrganizador(utilizador,arrayLinha[3]);
+                    Organizador org = novoOrganizador(utilizador);
                     listaOrganizadores.add(org);
+                }
+                else if(i<13) {
+                    Utilizador utilizador = getRegistoUtilizadores().getUtilizadorPorEmail(arrayLinha[1]);
+                    Participante par = novoParticipante(utilizador);
+                    listaParticipantes.add(par);
                 }
                 else{
                     Utilizador utilizador = getRegistoUtilizadores().getUtilizadorPorEmail(arrayLinha[1]);
-                    Participante par = novoParticipante(utilizador,arrayLinha[3]);
-                    listaParticipantes.add(par);
+                    Representante rep = novoRepresentante(utilizador);
+                    listaRepresentantes.add(rep);  
                 }
-
+              i++;
             }
             fileReader.close();
         } catch (IOException e) {
@@ -144,4 +150,22 @@ public class CentroEventos {
         }
         return true;
     }
-}
+    
+    public boolean associarRolesAEventos(){
+        List <Evento> listaEv = registoEventos.getListaEventos();
+        
+         for (Evento ev : listaEv){
+         for (FAE fae :listaFae){
+              ev.addFAE(fae);
+         }
+         for (Organizador org :listaOrganizadores){
+              ev.addOrganizador(org);
+         }
+        }
+           for (Evento ev : listaEv){System.out.println(ev.toString());}
+           return true;
+    }
+         
+       
+    }
+

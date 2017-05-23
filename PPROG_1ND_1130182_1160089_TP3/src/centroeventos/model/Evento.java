@@ -250,8 +250,8 @@ public abstract class Evento implements Serializable {
         return true;
     }
 
-    private boolean addOrganizador(Organizador o) {
-        return this.getListaOrganizadoresEvento().add(o);
+    public boolean addOrganizador(Organizador o) {
+        return this.listaOrganizadoresEvento.add(o);
     }
     
     public void addFAE(Utilizador u) {
@@ -271,8 +271,8 @@ public abstract class Evento implements Serializable {
     }
 
   
-    private boolean addFAE(FAE f) {
-        return this.getListaFaeEvento().add(f);
+    public boolean addFAE(FAE f) {
+        return this.listaFaeEvento.add(f);
     }
     
     
@@ -294,6 +294,10 @@ public abstract class Evento implements Serializable {
 
         for (Organizador org : this.getListaOrganizadoresEvento()) {
             sTxt += String.format("%s \n", org.toString());
+        }
+        
+         for (FAE fae : this.getListaFaeEvento()) {
+            sTxt += String.format("%s \n", fae.toString());
         }
 
         return sTxt;

@@ -15,7 +15,7 @@ import java.util.List;
 public class RegistoUtilizadores {
     
     
-   private List<Utilizador> listaUtilizadores = new ArrayList();
+   private final List<Utilizador> listaUtilizadores = new ArrayList();
    
    private static RegistoUtilizadores registoUtilizadores = new RegistoUtilizadores();
    private static final String NOME_FICHEIRO_TEXTO = "Utilizadores.txt";
@@ -52,13 +52,7 @@ public class RegistoUtilizadores {
         return listaUtilizadores;
     }
 
-    /**
-     * @param listaUtilizadores the listaUtilizadores to set
-     */
-    public void setListaUtilizadores(List<Utilizador> listaUtilizadores) {
-        this.listaUtilizadores = listaUtilizadores;
-    }
-    
+   
     public Utilizador getUtilizadorPorEmail(String email){
         for (Utilizador u : listaUtilizadores){
             if (u.getEmail().equals(email)){
