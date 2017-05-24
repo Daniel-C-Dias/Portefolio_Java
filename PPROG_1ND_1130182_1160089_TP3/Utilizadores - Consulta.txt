@@ -1,16 +1,25 @@
-﻿ddias;danieldias@gmail.com;ddias123;Daniel Dias
+﻿
+FAE:
+ddias;danieldias@gmail.com;ddias123;Daniel Dias
 jgoncalves;josegoncalves@isep.pt;jgoncalves123;Jose Goncalves
 cmadureira;cmadureira@gmail.com;gmadureira123;Carlos Madureira
 afonseca;afonseca@gmail.com;afonseca123;Antonio Fonseca
 jlemos;jlemos@sapo.pt;jlemos123;Joana Lemos
+
+
+Organizadores:
 nfreire;nfreire@isep.pt;nfreire123;Nelson Freire
 nsilva;nsilva@isep.pt;nsilva123;Nuno Silva
 elopes;elopes@gmail.com;elopes123;Eugenia Lopes
 isobral;isobral@sapo.pt;isobral123;Ines Sobral
 altranpt;altranpt@altran.pt;altran123;Altran Portugal
+
+Participantes:
 farfetch;farfetch@gmail.com;farfetch123;Farfetch
 jaleatorio;jaleatorio@gmail.com;jaleatorio123; Jorge Aleatorio
 rjoaquinito;ricardo.joaquinito@altran.com;rjoaquinito123;Ricardo Joaquinito
+
+Representantes:
 ptmmmargarido;ptmmmargarido@gmail.com;ptmmmargarido123; Pedro Margarido
 tbosmans;thomas_bosmans@hotmail.be;tbosmans123;Thomas Bosmans
 fmorais;f.rafael.f.morais@gmail.com;fmorais123; Fabio Morais

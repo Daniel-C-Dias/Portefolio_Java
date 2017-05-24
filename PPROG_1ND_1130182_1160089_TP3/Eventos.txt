@@ -1,10 +1,10 @@
-Mega Evento;Mega Evento com mega cenas a acontecer;Porto;2020/05/23;2020/06/29;2017/05/12
+﻿Mega Evento;Mega Evento com mega cenas a acontecer;Porto;2020/05/23;2020/06/29;2017/06/12
 Altran Christmas Party;Festa de Natal da empresa Altran;Porto;2017/12/22;2017/12/23;2017/05/19
-TomorowLand;Festival de Musica Europeu;Estombol;2016/03/17;2016/04/01;2016/02/12
+TomorowLand;Festival de Musica Europeu;Estombol;2016/03/17;2016/04/01;2017/07/12
 Final da Liga dos Campeoes;Final do campeonato de futebol europeu;Londres;2017/03/23;2017/04/01;2017/02/20
 Salao Erotico Porto;Exposicao de Conceitos e Produtos Eroticos;Porto;2020/04/29;2020/05/02;2015/02/02
 1Up Gaming Lounge;Evento de Gaming;Lisboa;2018/01/21;2018/02/03;2017/04/29
 Cherry Picking;Networking Engenharia Informatica;Porto;2017/06/09;2017/06/10;2017/05/18
 Reunião Professores;Reunião para debater o ensino no ISEP;Auditorio A;2017/06/11;2017/06/14;2017/05/15
-Feira de Emprego;Networking entre empresas e estudantes à procura de emprego;Auditorio B;2017/06/11;2017/06/14;2017/05/15
+Feira de Emprego;Networking entre empresas e estudantes à procura de emprego;Auditorio B;2017/06/11;2017/06/14;2017/08/15
 Queima das Fitas;Encontro entre estudantes associados à praxe;Auditorio C;2017/06/11;2017/06/15;2017/05/16

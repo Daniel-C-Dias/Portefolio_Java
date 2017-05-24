@@ -11,8 +11,8 @@ import java.util.List;
 public class Workshop  {
      
     private List <String> listaTemasWorkshop = new ArrayList();
-     private List <String> listaPeritosWorkshop = new ArrayList();
-     private Organizador organizadorWorkshop; // tem de ser um dos organizadores do congresso
+    private List <String> listaPeritosWorkshop = new ArrayList();
+    private Organizador organizadorWorkshop; // tem de ser um dos organizadores do congresso
      
      
 }

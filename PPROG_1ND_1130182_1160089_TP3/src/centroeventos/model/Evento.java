@@ -254,6 +254,11 @@ public abstract class Evento implements Serializable {
         return this.listaOrganizadoresEvento.add(o);
     }
     
+    public void addCandidatura(Representante representante, Participante participante, String motivo) {
+        Candidatura cand = new Candidatura( representante,  participante,  motivo);
+        listaCandidaturasEvento.add(cand);
+    }
+    
     public void addFAE(Utilizador u) {
         FAE fae = new FAE();
         fae.setuFae(u);

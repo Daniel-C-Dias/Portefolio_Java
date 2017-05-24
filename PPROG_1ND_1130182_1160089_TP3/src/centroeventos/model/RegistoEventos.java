@@ -109,7 +109,7 @@ public class RegistoEventos {
         return eventoPretendido;
     }
 
-    public List<Evento> getEventosSubmissaoPronta() {
+    public List<Evento> getEventosAtivos() {
 
         List<Evento> eventosActivos = new ArrayList();
 

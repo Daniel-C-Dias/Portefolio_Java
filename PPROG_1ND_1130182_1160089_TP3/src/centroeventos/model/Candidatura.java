@@ -16,7 +16,7 @@ public class Candidatura implements Serializable {
   private Representante representante;
   private Participante participante;
   private static int contaCandidaturas = 1;
-  private String moradaEmpresaParticipante;
+  private String motivo;
 
     public Candidatura() {
         this.idCandidatura = contaCandidaturas;
@@ -24,11 +24,11 @@ public class Candidatura implements Serializable {
     }
   
   
-  public Candidatura(Representante representante, Participante participante, String moradaEmpresaParticipante) {
+  public Candidatura(Representante representante, Participante participante, String motivo) {
         this.idCandidatura = contaCandidaturas;
         this.representante = representante;
         this.participante = participante;
-        this.moradaEmpresaParticipante=moradaEmpresaParticipante;
+        this.motivo=motivo;
         contaCandidaturas++;
     }
 
@@ -47,8 +47,8 @@ public class Candidatura implements Serializable {
        /**
      * @return the moradaEmpresaParticipante
      */
-    public String getMoradaEmpresaParticipante() {
-        return moradaEmpresaParticipante;
+    public String getMotivo() {
+        return motivo;
     }
 
     public void setIdCandidatura(int idCandidatura) {
@@ -64,10 +64,10 @@ public class Candidatura implements Serializable {
     }
     
     /**
-     * @param moradaEmpresaParticipante the moradaEmpresaParticipante to set
+     * @param motivo the motivo to set
      */
-    public void setMoradaEmpresaParticipante(String moradaEmpresaParticipante) {
-        this.moradaEmpresaParticipante = moradaEmpresaParticipante;
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
     }
     
   

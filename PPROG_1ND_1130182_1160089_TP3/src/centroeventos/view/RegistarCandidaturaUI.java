@@ -23,72 +23,157 @@ import centroeventos.model.Utilizador;
  */
 public class RegistarCandidaturaUI extends JPanel {
    
-   private Utilizador userRepresentante;
+   private Utilizador utilizadorRepresentante;
    private Utilizador utilizadorParticipante;
    private final RegistarCandidaturaController REGISTAR_CONTROLLER;
-   private JPanel p2;
    private List<Evento> listaEventos;
+   List <Utilizador> listaUtilizadores;
    private JComboBox cbEventos;
+   private JComboBox cbParticipantes;
    private Evento eventoSelecionado;
+   JTextField txtMotivo;
+   
    
    public RegistarCandidaturaUI(Utilizador userContexto){
        
-       userRepresentante=userContexto;
+       utilizadorRepresentante=userContexto;
        REGISTAR_CONTROLLER= new RegistarCandidaturaController();
+       setLayout(new GridLayout(4,1));
+       
+       JPanel p1= criarP1(); 
+       JPanel p2= criarP2(); 
+       JPanel p3= criarP3();
+       JPanel p4= criarP4();
               
-       JPanel p1= criarP1(); // Selecionar Evento
-       p2= criarP2(); // Selecionar utilizador participante e respetiva morada Morada para instanciar candidatura
-       p3= criarP3(); // Botão Voltar
-              
-       add(p1, BorderLayout.NORTH);
-       add(p2, BorderLayout.CENTER);
-       add(p3, BorderLayout.SOUTH);
+       add(p1);
+       add(p2);
+       add(p3);
+       add(p4);
    }
    
    private JPanel criarP1(){
         JPanel p = new JPanel();
         
-        JLabel labelEv = new JLabel("Por favor selecione O evento!", JLabel.CENTER);
+        JLabel labelEv = new JLabel("Por favor selecione o evento:", JLabel.CENTER);
         cbEventos = criarCbEventos();
         cbEventos.setMaximumRowCount(4);
-        JButton btEventos = criarBtEventos();
         
         p.add(labelEv);
         p.add(cbEventos);
-        p.add(btEventos);
+        
+        return p;
+    }
+    
+    private JPanel criarP2(){
+        JPanel p = new JPanel();
+        
+        JLabel labelPar = new JLabel("Por favor selecione o participante:", JLabel.CENTER);
+        cbParticipantes = criarCbParticipantes();
+        cbParticipantes.setMaximumRowCount(4);
+        
+        p.add(labelPar);
+        p.add(cbParticipantes);
+        
+        return p;
+    }
+    
+     private JPanel criarP3(){
+        JPanel p = new JPanel(new GridLayout(2,1));
+        JPanel p1 = new JPanel();
+         
+        JLabel labelMotivo = new JLabel("Motivo da Candidatura:", JLabel.CENTER);
+        txtMotivo = new JTextField(50);
+        p1.add(txtMotivo);
+        p.add(labelMotivo);
+        p.add(p1);
+        
+        return p;
+     }
+    
+    private JPanel criarP4(){
+        JPanel p = new JPanel();
+        
+        JButton btConfirmar = criarBtConfirmar();
+        JButton btVoltar = criarBtVoltar();
+        
+        p.add(btConfirmar);
+        p.add(btVoltar);
         
         return p;
     }
    
-   
    private JComboBox criarCbEventos(){
         listaEventos =  REGISTAR_CONTROLLER.getEventosActivos();
         
-        ArrayList<String> listaEventosFaeString = new ArrayList();
+        ArrayList<String> listaEventosString = new ArrayList();
         for (Evento e : listaEventos){
-            listaEventosFaeString.add(e.getTitulo());
+            listaEventosString.add(e.getTitulo());
         }
         
-        String[] arrayListaEventosFaeString = listaEventosFaeString.toArray(new String[0]);
+        String[] arrayListaEventosString = listaEventosString.toArray(new String[0]);
         
-        return new JComboBox(arrayListaEventosFaeString);
+        return new JComboBox(arrayListaEventosString);
     }
    
-    private JButton criarBtEventos(){
-        JButton btn = new JButton("Evento Selecionado");
+   private JComboBox criarCbParticipantes(){
+        listaUtilizadores =  REGISTAR_CONTROLLER.getListaUtilizadores();
+        //listaUtilizadores.remove(utilizadorRepresentante); O representante pode ser o participante da própria candidatura
+        
+        ArrayList<String> listaUtilizadoresString = new ArrayList();
+        for (Utilizador u : listaUtilizadores){
+            listaUtilizadoresString.add(u.getUserName());
+        }
+        
+        String[] arraylistaUtilizadoresString = listaUtilizadoresString.toArray(new String[0]);
+        
+        return new JComboBox(arraylistaUtilizadoresString);
+    }
+   
+   
+     private JButton criarBtConfirmar(){
+        JButton btn = new JButton("Confirmar");
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               for (Evento ev : listaEventos){
+                for (Evento ev : listaEventos){
                   if (ev.getTitulo().equals(cbEventos.getSelectedItem())) {
                       eventoSelecionado= ev;
                   }
                 }
-               p2= criarP2();
-               p2.revalidate(); //PERCEBER MELHOR
+                
+                for (Utilizador u : listaUtilizadores){
+                  if (u.getUserName().equals(cbParticipantes.getSelectedItem())) {
+                      utilizadorParticipante= u;
+                  }
+                }
+                
+                String motivo;
+                motivo= txtMotivo.getText().trim().isEmpty() ? "Não preenchido" : txtMotivo.getText().trim();
+                boolean registado=REGISTAR_CONTROLLER.registarCandidatura(eventoSelecionado, utilizadorParticipante, utilizadorRepresentante, motivo );
+                if(registado){
+                    JFrame janela= new JFrame();
+                     JOptionPane.showMessageDialog(
+                                janela,
+                                "Candidatura efetuada com Sucesso",
+                                "ISEP - Centro de Eventos",
+                                JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
         
         return btn;
     }
+     
+     private JButton criarBtVoltar(){
+        JButton btn = new JButton("Voltar");
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              
+            }
+        });
+        
+        return btn; 
+    }
+     
 }
