@@ -10,6 +10,7 @@ import centroeventos.model.AtribuicaoCandidatura;
 import centroeventos.model.Evento;
 import centroeventos.model.Utilizador;
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,11 +36,15 @@ public class DecidirCandidaturaUI extends JPanel {
     private JPanel p3;
     private final DecidirCandidaturaController DECIDIR_CONTROLLER;
     private List<Evento> listaEventosFae;
+    private final JPanel pCardLayout;
+    private final CardLayout cardLayout;
     
-    public DecidirCandidaturaUI(Utilizador userContexto){
+    public DecidirCandidaturaUI(Utilizador userContexto, JPanel pCardLayout, CardLayout cardLayout){
        
        DECIDIR_CONTROLLER= new DecidirCandidaturaController();
        this.userContexto=userContexto; 
+       this.pCardLayout=pCardLayout;
+       this.cardLayout=cardLayout;
        this.setLayout(new GridLayout(3,1,10,10));
        JPanel p1= criarP1();
        p2= new JPanel();

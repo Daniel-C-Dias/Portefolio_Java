@@ -33,13 +33,13 @@ public class RegistarCandidaturaUI extends JPanel {
    private JComboBox cbParticipantes;
    private Evento eventoSelecionado;
    private JTextField txtMotivo;
-   private JPanel pcardlayout;
-   private CardLayout cardLayout;
+   private final JPanel pCardLayout;
+   private final CardLayout cardLayout;
    
-   public RegistarCandidaturaUI(Utilizador userContexto, JPanel pcardlayout, CardLayout cardLayout){
+   public RegistarCandidaturaUI(Utilizador userContexto, JPanel pCardLayout, CardLayout cardLayout){
        
        utilizadorRepresentante=userContexto;
-       this.pcardlayout=pcardlayout;
+       this.pCardLayout=pCardLayout;
        this.cardLayout=cardLayout;
        REGISTAR_CONTROLLER= new RegistarCandidaturaController();
        setLayout(new GridLayout(4,1));
@@ -173,7 +173,7 @@ public class RegistarCandidaturaUI extends JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               cardLayout.first(pcardlayout);
+               cardLayout.first(pCardLayout);
             }
         });
         
