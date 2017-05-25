@@ -213,7 +213,7 @@ public class MenuUI extends JFrame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pCardLayout.add(new RegistarCandidaturaUI(userContexto), UC05);
+                pCardLayout.add(new RegistarCandidaturaUI(userContexto, pCardLayout, cardLayout), UC05);
                 cardLayout.show(pCardLayout, UC05);
             }
         });

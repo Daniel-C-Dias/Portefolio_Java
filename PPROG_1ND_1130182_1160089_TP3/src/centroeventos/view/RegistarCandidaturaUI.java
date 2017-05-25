@@ -16,6 +16,7 @@ import Utilitarios.*;
 import centroeventos.controller.RegistarCandidaturaController;
 import centroeventos.model.Evento;
 import centroeventos.model.Utilizador;
+import java.awt.CardLayout;
 
 /**
  *
@@ -31,12 +32,15 @@ public class RegistarCandidaturaUI extends JPanel {
    private JComboBox cbEventos;
    private JComboBox cbParticipantes;
    private Evento eventoSelecionado;
-   JTextField txtMotivo;
+   private JTextField txtMotivo;
+   private JPanel pcardlayout;
+   private CardLayout cardLayout;
    
-   
-   public RegistarCandidaturaUI(Utilizador userContexto){
+   public RegistarCandidaturaUI(Utilizador userContexto, JPanel pcardlayout, CardLayout cardLayout){
        
        utilizadorRepresentante=userContexto;
+       this.pcardlayout=pcardlayout;
+       this.cardLayout=cardLayout;
        REGISTAR_CONTROLLER= new RegistarCandidaturaController();
        setLayout(new GridLayout(4,1));
        
@@ -169,7 +173,7 @@ public class RegistarCandidaturaUI extends JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              
+               cardLayout.first(pcardlayout);
             }
         });
         
