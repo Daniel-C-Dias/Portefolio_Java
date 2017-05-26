@@ -1,18 +1,12 @@
 
 package centroeventos.view;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
-import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
-import Utilitarios.*;
 import centroeventos.controller.RegistarCandidaturaController;
 import centroeventos.model.Evento;
 import centroeventos.model.Utilizador;
@@ -108,7 +102,7 @@ public class RegistarCandidaturaUI extends JPanel {
    
    private JComboBox criarCbEventos(){
         listaEventos =  REGISTAR_CONTROLLER.getEventosActivos();
-        
+
         ArrayList<String> listaEventosString = new ArrayList();
         for (Evento e : listaEventos){
             listaEventosString.add(e.getTitulo());

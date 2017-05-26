@@ -61,7 +61,35 @@ public class CentroEventos {
      */
     public List<Participante> getListaParticipantes() {
         return listaParticipantes;
+    }    /**
+     * @return the listaAlgoritmos
+     */
+    public List<AlgoritmoAtribuicao> getListaAlgoritmos() {
+        return listaAlgoritmos;
     }
+
+    /**
+     * @return the listaRepresentantes
+     */
+    public List<Representante> getListaRepresentantes() {
+        return listaRepresentantes;
+    }
+
+    /**
+     * @param listaAlgoritmos the listaAlgoritmos to set
+     */
+    public void setListaAlgoritmos(List<AlgoritmoAtribuicao> listaAlgoritmos) {
+        this.listaAlgoritmos = listaAlgoritmos;
+    }
+
+    /**
+     * @param listaRepresentantes the listaRepresentantes to set
+     */
+    public void setListaRepresentantes(List<Representante> listaRepresentantes) {
+        this.listaRepresentantes = listaRepresentantes;
+    }
+    
+    
 
     /**
      * @param listaFae the listaFae to set
@@ -94,6 +122,10 @@ public class CentroEventos {
 
     public void addParticipante(Participante par) {
         listaParticipantes.add(par);
+    }
+    
+    public void addAlgoritmo(AlgoritmoAtribuicao alg) {
+        listaAlgoritmos.add(alg);
     }
 
     public FAE novoFAE(Utilizador uFAE) {
@@ -139,7 +171,7 @@ public class CentroEventos {
                 else{
                     Utilizador utilizador = getRegistoUtilizadores().getUtilizadorPorEmail(arrayLinha[1]);
                     Representante rep = novoRepresentante(utilizador);
-                    listaRepresentantes.add(rep);  
+                    getListaRepresentantes().add(rep);  
                 }
               i++;
             }

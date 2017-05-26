@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -152,4 +153,28 @@ public class DecidirCandidaturaUI extends JPanel {
         
         return btn;
     }
+    
+//     private  JRadioButton criarRadioBtn(String nome){
+//         
+//         JRadioButton jbtn = new JRadioButton(nome);
+//       
+//         jbtn.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//              ///
+//            }
+//        });
+//         
+//        return jbtn;
+//     }
+    
+//      JRadioButton	smallButton= criarRadioBtn("Small");	
+//         JRadioButton	mediumButton= criarRadioBtn("Medium");	
+//         JRadioButton	largeButton= criarRadioBtn("Large");
+//         smallButton.setSelected(true);
+//         ButtonGroup	group	= new	ButtonGroup();	
+//         group.add(smallButton);	
+//         group.add(mediumButton);	
+//         group.add(largeButton);
+//    p.setBorder(new	TitledBorder(new EtchedBorder(),"Selecione um algoritmo de atribuição"));
 }

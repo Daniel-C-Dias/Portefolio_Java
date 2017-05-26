@@ -1,6 +1,7 @@
 package centroeventos.model;
 
 import java.util.List;
+import javafx.util.Pair;
 
 /**
  *
@@ -8,7 +9,6 @@ import java.util.List;
  */
 public interface AlgoritmoAtribuicao {
 
-    public List<AtribuicaoCandidatura> atribui();
-
-
+    public List<Pair<Candidatura, FAE>> atribui();
+    public String getNomeAlgoritmo();
 }
