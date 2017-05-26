@@ -8,7 +8,8 @@ import javafx.util.Pair;
  * @author Daniel Dias & José Gonçalves
  */
 public interface AlgoritmoAtribuicao {
-
+     
     public List<Pair<Candidatura, FAE>> atribui();
     public String getNomeAlgoritmo();
+    public void setEvento(Evento evento);
 }

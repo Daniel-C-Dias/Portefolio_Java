@@ -11,13 +11,24 @@ import javafx.util.Pair;
  * @author Daniel Dias & José Gonçalves
  */
 public class AlgoritmoAtribuicaoTotal implements AlgoritmoAtribuicao{
-
+    
+    private final String NOME_ALGORITMO="AlgoritmoAtribuicaoTotal";
     private String nomeAlgoritmo;
     private Evento evento;
     
     public AlgoritmoAtribuicaoTotal(String nomeAlgoritmo, Evento evento){
         this.nomeAlgoritmo=nomeAlgoritmo;
         this.evento=evento;
+    }
+    
+    public AlgoritmoAtribuicaoTotal( Evento evento){
+        this.nomeAlgoritmo=NOME_ALGORITMO;
+        this.evento=evento;
+    }
+    
+    public AlgoritmoAtribuicaoTotal(){
+        this.nomeAlgoritmo=NOME_ALGORITMO;
+        this.evento=null;
     }
     
      /**

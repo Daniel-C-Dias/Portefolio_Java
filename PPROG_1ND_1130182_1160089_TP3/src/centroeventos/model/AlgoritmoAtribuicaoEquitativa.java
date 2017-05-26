@@ -10,13 +10,23 @@ import javafx.util.Pair;
  * @author Daniel Dias & José Gonçalves
  */
 public class AlgoritmoAtribuicaoEquitativa implements AlgoritmoAtribuicao {
-
+    private final String NOME_ALGORITMO="AlgoritmoAtribuicaoEquitativa";
     private String nomeAlgoritmo;
     private Evento evento;
     
     public AlgoritmoAtribuicaoEquitativa(String nomeAlgoritmo, Evento evento){
         this.nomeAlgoritmo=nomeAlgoritmo;
         this.evento=evento;
+    }
+    
+    public AlgoritmoAtribuicaoEquitativa(Evento evento){
+        this.nomeAlgoritmo=NOME_ALGORITMO;
+        this.evento=evento;
+    }
+    
+    public AlgoritmoAtribuicaoEquitativa(){
+        this.nomeAlgoritmo=NOME_ALGORITMO;
+        this.evento=null;
     }
     
     /**
@@ -44,6 +54,7 @@ public class AlgoritmoAtribuicaoEquitativa implements AlgoritmoAtribuicao {
     /**
      * @param evento the evento to set
      */
+    @Override
     public void setEvento(Evento evento) {
         this.evento = evento;
     }
@@ -56,21 +67,28 @@ public class AlgoritmoAtribuicaoEquitativa implements AlgoritmoAtribuicao {
         List<Pair<Candidatura, FAE>>listaAtribuicoes = new ArrayList();
         
         int nrFAEPorCandidatura = listaFaeEvento.size() / listaCandidaturaEvento.size(); //numero total de Fae a atribuir por candidatura
-        int n = 0; //contador de ajuda a atribuição
+        int nrFAERestantes =listaFaeEvento.size() % listaCandidaturaEvento.size();
 
-        for (int i = 0; i < listaCandidatura.size(); i++) {
-            for (int j = 0; j < listaFae.size(); j++) {
-                while (n != quantosFAE) {
-                    if (listaAtribuicoes.contains(new AtribuicaoCandidatura(listaFae.get(j), listaCandidatura.get(i).getIdCandidatura()))) {
-                        j++;
-                    } else {
-                        listaAtribuicoes.add(new AtribuicaoCandidatura(listaFae.get(j), listaCandidatura.get(i).getIdCandidatura()));
-                    }
+        if(nrFAEPorCandidatura>0){
+            for (Candidatura cand : listaCandidaturaEvento){
+               if(listaCandidaturaEvento.get(listaCandidaturaEvento.size()-1)!=cand){
+                  for (int i=0; i<nrFAEPorCandidatura;i++){
+                   listaAtribuicoes.add( new Pair<>(cand, listaFaeEvento.get(i))); 
                 }
+               } 
+               else{
+                  for (int i=0; i<nrFAEPorCandidatura+nrFAERestantes;i++){
+                   listaAtribuicoes.add( new Pair<>(cand, listaFaeEvento.get(i))); 
+                }
+              }
             }
-
         }
-            return listaAtribuicoes;
+        else{
+            for (Candidatura cand : listaCandidaturaEvento){
+                listaAtribuicoes.add( new Pair<>(cand, listaFaeEvento.get(0))); 
+            }
+        }
+        return listaAtribuicoes;
     }
 
     

@@ -7,7 +7,9 @@ package centroeventos.view;
 
 import centroeventos.controller.AtribuirCandidaturaController;
 import centroeventos.model.AlgoritmoAtribuicao;
+import centroeventos.model.Candidatura;
 import centroeventos.model.Evento;
+import centroeventos.model.FAE;
 import centroeventos.model.Utilizador;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -15,8 +17,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.util.Pair;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -31,6 +37,7 @@ public class AtribuirCandidaturaUI extends JPanel {
     private final CardLayout cardLayout;
     private List<Evento> listaEventosOrg;
     private List<AlgoritmoAtribuicao> listaAlgoritmos;
+    private List<Pair<Candidatura, FAE>> listaCanFae;
     private final AtribuirCandidaturaController ATRIBUIR_CONTROLLER;
     private JComboBox cbEventos;
     private JComboBox cbAlgoritmos;
@@ -61,12 +68,9 @@ public class AtribuirCandidaturaUI extends JPanel {
         JLabel labelEv = new JLabel("Por favor selecione um evento!", JLabel.CENTER);
         cbEventos = criarCbEventos();
         cbEventos.setMaximumRowCount(4);
-        JButton btEventos = criarBtEventos();
-
+        
         p.add(labelEv);
         p.add(cbEventos);
-        p.add(btEventos);
-
         return p;
     }
 
@@ -78,12 +82,10 @@ public class AtribuirCandidaturaUI extends JPanel {
         JLabel labelAlg = new JLabel("Por favor selecione um algoritmo!", JLabel.CENTER);
         cbAlgoritmos = criarCbAlgoritmos();
         cbAlgoritmos.setMaximumRowCount(3);
-        JButton btAlgoritmos = criarBtAlgoritmos();
         JButton btSimular = criarBtSimular();
 
         p.add(labelAlg);
         p.add(cbAlgoritmos);
-        p.add(btAlgoritmos);
 
         p1.add(btSimular, JButton.CENTER);
 
@@ -129,8 +131,8 @@ public class AtribuirCandidaturaUI extends JPanel {
         return new JComboBox(arrayListaAlgoritmosString);
     }
 
-    private JButton criarBtEventos() {
-        JButton btn = new JButton("Evento Selecionado");
+    private JButton criarBtSimular() {
+        JButton btn = new JButton("Simular Atribuição de Candidaturas");
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -139,34 +141,25 @@ public class AtribuirCandidaturaUI extends JPanel {
                         eventoSelecionado = ev;
                     }
                 }
-            }
-        });
-
-        return btn;
-    }
-
-    private JButton criarBtAlgoritmos() {
-        JButton btn = new JButton("Algoritmo Selecionado");
-        btn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                
                 for (AlgoritmoAtribuicao alg : listaAlgoritmos) {
                     if (alg.getNomeAlgoritmo().equals(cbAlgoritmos.getSelectedItem())) {
                         algoritmoSelecionado = alg;
                     }
                 }
-            }
-        });
-
-        return btn;
-    }
-
-    private JButton criarBtSimular() {
-        JButton btn = new JButton("Simular Atribuição de Candidaturas");
-        btn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //
+                
+                
+                try {
+                     AlgoritmoAtribuicao instanciaAlg =algoritmoSelecionado.getClass().newInstance();
+                     instanciaAlg.setEvento(eventoSelecionado);
+                     listaCanFae=instanciaAlg.atribui();
+                } catch (InstantiationException | IllegalAccessException ex) {
+                    Logger.getLogger(AtribuirCandidaturaUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+              JFrame janela= new JFrame();
+              new DialogoListaAtribuicoes(janela, listaCanFae);
+              
             }
         });
 

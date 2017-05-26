@@ -11,14 +11,26 @@ import javafx.util.Pair;
  * @author Daniel Dias & José Gonçalves
  */
 public class AlgoritmoAtribuicaoAleatoria implements AlgoritmoAtribuicao{
-
-   private String nomeAlgoritmo;
+    
+    private final String NOME_ALGORITMO="AlgoritmoAtribuicaoAleatoria";
+    private String nomeAlgoritmo;
     private Evento evento;
     
     public AlgoritmoAtribuicaoAleatoria(String nomeAlgoritmo, Evento evento){
         this.nomeAlgoritmo=nomeAlgoritmo;
         this.evento=evento;
     }
+    
+    public AlgoritmoAtribuicaoAleatoria(Evento evento){
+        this.nomeAlgoritmo=NOME_ALGORITMO;
+        this.evento=evento;
+    }
+    public AlgoritmoAtribuicaoAleatoria(){
+        this.nomeAlgoritmo=NOME_ALGORITMO;
+        this.evento=null;
+    }
+    
+    
     
         /**
      * @return the nomeAlgoritmo
