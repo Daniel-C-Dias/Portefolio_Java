@@ -22,7 +22,8 @@ public class AtribuicaoCandidatura {
         this.fae=fae;
         this.idCandidatura=idCandidatura;
         decisao = new DecisaoCandidatura();
-        idAtribuicao=contadorId++;
+        idAtribuicao=contadorId;
+        contadorId++;
     }
     
     /**

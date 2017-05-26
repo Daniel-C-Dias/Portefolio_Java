@@ -4,10 +4,13 @@ import centroeventos.model.AlgoritmoAtribuicao;
 import centroeventos.model.AlgoritmoAtribuicaoAleatoria;
 import centroeventos.model.AlgoritmoAtribuicaoEquitativa;
 import centroeventos.model.AlgoritmoAtribuicaoTotal;
+import centroeventos.model.Candidatura;
 import centroeventos.model.CentroEventos;
 import java.util.List;
 import centroeventos.model.Evento;
+import centroeventos.model.FAE;
 import centroeventos.model.Utilizador;
+import javafx.util.Pair;
 
 /**
  *
@@ -16,8 +19,6 @@ import centroeventos.model.Utilizador;
 public class AtribuirCandidaturaController {
 
     private final CentroEventos centroEventos;
-    private static Evento evento;
-
     
     public AtribuirCandidaturaController() {
         this.centroEventos = CentroEventos.getCentroEventos();
@@ -39,8 +40,8 @@ public class AtribuirCandidaturaController {
         centroEventos.addAlgoritmo(new AlgoritmoAtribuicaoAleatoria("AlgoritmoAtribuicaoAleatoria", evento));
     }
     
-    public static void setEvento(Evento evento) {
-        AtribuirCandidaturaController.evento = evento;
+    public boolean registarAtribuicoesCandidaturas(Evento evento, List<Pair<Candidatura, FAE>> listaAtrib) {
+       return centroEventos.getRegistoEventos().getEvento(evento.getIdEvento()).registarAtribuicoesCandidaturas(listaAtrib);
     }
   
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import Utilitarios.Data;
 import java.io.Serializable;
+import javafx.util.Pair;
 
 /**
  *
@@ -57,6 +58,7 @@ public abstract class Evento implements Serializable {
         this.listaOrganizadoresEvento = listaOrganizadoresEvento;
         this.listaCandidaturasEvento = listaCandidaturasEvento;
         this.listaFaeEvento = listaFaeEvento;
+        this.listaAtribuicoes =new ArrayList();
         contaEvento++;
     }
     
@@ -71,6 +73,7 @@ public abstract class Evento implements Serializable {
         this.listaOrganizadoresEvento = new ArrayList();
         this.listaCandidaturasEvento = new ArrayList();
         this.listaFaeEvento = new ArrayList();
+        this.listaAtribuicoes =new ArrayList();
         contaEvento++;
     }
     
@@ -293,6 +296,15 @@ public abstract class Evento implements Serializable {
         return listaAtribuicaoCandidaturasFae;
     }
     
+    public boolean registarAtribuicoesCandidaturas(List<Pair<Candidatura, FAE>> listaAtrib){
+        for (Pair<Candidatura, FAE> atrib : listaAtrib ){
+           AtribuicaoCandidatura atribuicao= new AtribuicaoCandidatura(atrib.getValue(),atrib.getKey().getIdCandidatura());
+           listaAtribuicoes.add(atribuicao);
+        }
+        return true;
+    }
+    
+    @Override
     public String toString() {
         String sTxt;
         sTxt = String.format("%s;%s;%s;%s%s;\n", this.getTitulo(), this.getTextoDescritivo(), this.getDataInicio().toString(), this.getDataFim().toString(), this.getDataLimiteSubCandidaturas().toString(), this.getLocal());

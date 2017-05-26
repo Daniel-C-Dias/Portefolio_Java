@@ -24,6 +24,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -41,6 +42,7 @@ public class AtribuirCandidaturaUI extends JPanel {
     private final AtribuirCandidaturaController ATRIBUIR_CONTROLLER;
     private JComboBox cbEventos;
     private JComboBox cbAlgoritmos;
+    private JButton btRegistar;
     private Evento eventoSelecionado;
     private AlgoritmoAtribuicao algoritmoSelecionado;
 
@@ -65,7 +67,7 @@ public class AtribuirCandidaturaUI extends JPanel {
     private JPanel criarP1() {
         JPanel p = new JPanel();
 
-        JLabel labelEv = new JLabel("Por favor selecione um evento!", JLabel.CENTER);
+        JLabel labelEv = new JLabel("Por favor selecione um evento:", JLabel.CENTER);
         cbEventos = criarCbEventos();
         cbEventos.setMaximumRowCount(4);
         
@@ -79,7 +81,7 @@ public class AtribuirCandidaturaUI extends JPanel {
         JPanel p = new JPanel();
         JPanel p1 = new JPanel();
 
-        JLabel labelAlg = new JLabel("Por favor selecione um algoritmo!", JLabel.CENTER);
+        JLabel labelAlg = new JLabel("Por favor selecione um algoritmo:", JLabel.CENTER);
         cbAlgoritmos = criarCbAlgoritmos();
         cbAlgoritmos.setMaximumRowCount(3);
         JButton btSimular = criarBtSimular();
@@ -98,9 +100,9 @@ public class AtribuirCandidaturaUI extends JPanel {
     private JPanel criarP3() {
         JPanel p = new JPanel();
 
-        JButton btRegistar = criarBtRegistar();
+        btRegistar = criarBtRegistar();
         JButton btVoltar = criarBtVoltar();
-
+        btRegistar.setEnabled(false);
         p.add(btRegistar);
         p.add(btVoltar);
 
@@ -136,6 +138,8 @@ public class AtribuirCandidaturaUI extends JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                btRegistar.setEnabled(true);
+                
                 for (Evento ev : listaEventosOrg) {
                     if (ev.getTitulo().equals(cbEventos.getSelectedItem())) {
                         eventoSelecionado = ev;
@@ -171,7 +175,14 @@ public class AtribuirCandidaturaUI extends JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               //
+               if(ATRIBUIR_CONTROLLER.registarAtribuicoesCandidaturas(eventoSelecionado,listaCanFae)){
+                   JFrame janela= new JFrame();
+                     JOptionPane.showMessageDialog(
+                                janela,
+                                "Atribuições efetuadas com Sucesso",
+                                "ISEP - Centro de Eventos",
+                                JOptionPane.INFORMATION_MESSAGE);
+               }
             }
         });
         

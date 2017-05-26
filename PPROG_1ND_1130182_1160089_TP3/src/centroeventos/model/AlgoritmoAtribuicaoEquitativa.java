@@ -2,6 +2,7 @@ package centroeventos.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javafx.util.Pair;
 
 
@@ -85,7 +86,8 @@ public class AlgoritmoAtribuicaoEquitativa implements AlgoritmoAtribuicao {
         }
         else{
             for (Candidatura cand : listaCandidaturaEvento){
-                listaAtribuicoes.add( new Pair<>(cand, listaFaeEvento.get(0))); 
+                Random geradorAleatorio = new Random();
+                listaAtribuicoes.add( new Pair<>(cand, listaFaeEvento.get(geradorAleatorio.nextInt(listaFaeEvento.size())))); 
             }
         }
         return listaAtribuicoes;
