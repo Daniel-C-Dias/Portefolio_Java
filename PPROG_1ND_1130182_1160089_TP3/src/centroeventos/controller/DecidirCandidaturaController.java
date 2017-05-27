@@ -36,4 +36,12 @@ public class DecidirCandidaturaController {
     public String getMotivoCandidatura(Evento evento, int idCandidatura){
         return centroEventos.getRegistoEventos().getEvento(evento.getIdEvento()).getCandidaturaPorId(idCandidatura).getMotivo();
     }
+    
+    public boolean registarDecisao(Evento evento, AtribuicaoCandidatura atribuicao, boolean aceita, String motivo ){
+        centroEventos.getRegistoEventos().getEvento(evento.getIdEvento()).getAtribuicaoCandidaturaPorID(atribuicao.getIdAtribuicao()).getDecisao().setJaAvaliada(true);
+        centroEventos.getRegistoEventos().getEvento(evento.getIdEvento()).getAtribuicaoCandidaturaPorID(atribuicao.getIdAtribuicao()).getDecisao().setAceite(aceita);
+        centroEventos.getRegistoEventos().getEvento(evento.getIdEvento()).getAtribuicaoCandidaturaPorID(atribuicao.getIdAtribuicao()).getDecisao().setJustificacaoDecisao(motivo);
+        
+        return true;
+    }
 }

@@ -19,7 +19,9 @@ import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -44,6 +46,10 @@ public class DecidirCandidaturaUI extends JPanel {
     private final JPanel pCardLayout;
     private final CardLayout cardLayout;
     private int idCandidatura;
+    private JTextField txtMotivo;
+    private ButtonGroup group;
+    private JRadioButton btnSim;
+    private JRadioButton btnNao;
     
     public DecidirCandidaturaUI(Utilizador userContexto, JPanel pCardLayout, CardLayout cardLayout){
        
@@ -127,10 +133,10 @@ public class DecidirCandidaturaUI extends JPanel {
         JLabel lblAceitar = new JLabel("Aceita a candidatura:", JLabel.CENTER);
         p1.add(lblAceitar);
         
-        JRadioButton btnSim = criarRadioBtn("Sim");	
-        JRadioButton btnNao= criarRadioBtn("Não");
+        btnSim = criarRadioBtn("Sim");	
+        btnNao= criarRadioBtn("Não");
         btnSim.setSelected(true);
-        ButtonGroup group = new	ButtonGroup();	
+        group = new	ButtonGroup();	
         group.add(btnSim);	
         group.add(btnNao);	
         p1.add(btnSim);
@@ -138,7 +144,7 @@ public class DecidirCandidaturaUI extends JPanel {
         
         JLabel lblMotivo = new JLabel("Texto justificativo da decisão:", JLabel.CENTER);
         
-        JTextField txtMotivo = new JTextField();
+        txtMotivo = new JTextField();
         
         pPainel.add(p1);
         pPainel.add(lblMotivo);
@@ -239,12 +245,24 @@ public class DecidirCandidaturaUI extends JPanel {
          
         return jbtn;
     }
-    
+     
     private JButton criarBtDecidir(){
         JButton btn = new JButton("Decidir Candidatura");
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String motivo;
+                motivo= txtMotivo.getText().trim().isEmpty() ? "Não preenchido" : txtMotivo.getText().trim();
+                boolean aceita=btnSim.isSelected();
+                boolean registado=DECIDIR_CONTROLLER.registarDecisao(eventoSelecionado, candidaturaSelecionada , aceita, motivo);
+                if(registado){
+                    JFrame janela= new JFrame();
+                     JOptionPane.showMessageDialog(
+                                janela,
+                                "Decisão registada com Sucesso",
+                                "ISEP - Centro de Eventos",
+                                JOptionPane.INFORMATION_MESSAGE);
+                }    
                 
             }
         });

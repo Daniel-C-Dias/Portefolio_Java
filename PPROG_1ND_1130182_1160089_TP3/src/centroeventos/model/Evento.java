@@ -311,6 +311,15 @@ public abstract class Evento implements Serializable {
         return true;
     }
     
+    public AtribuicaoCandidatura getAtribuicaoCandidaturaPorID(int id){
+        for(AtribuicaoCandidatura atribuicao : listaAtribuicoes){
+            if(atribuicao.getIdAtribuicao()==id){
+                 return atribuicao;
+            }
+        }
+        return null;
+    }
+    
     @Override
     public String toString() {
         String sTxt;

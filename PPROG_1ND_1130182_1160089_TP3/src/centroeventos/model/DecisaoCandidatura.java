@@ -10,7 +10,20 @@ public class DecisaoCandidatura {
     private boolean jaAvaliada;
     private boolean aceite; 
     private String justificacaoDecisao;
-
+    
+    public DecisaoCandidatura(){
+        this.jaAvaliada=false;
+        this.aceite=false;
+        this.justificacaoDecisao="";
+    }
+    
+    public DecisaoCandidatura(boolean jaAvaliada,boolean aceite,String justificacaoDecisao){
+        this.jaAvaliada=jaAvaliada;
+        this.aceite=aceite;
+        this.justificacaoDecisao=justificacaoDecisao;
+    }
+    
+           
     /**
      * @return the jaAvaliada
      */
