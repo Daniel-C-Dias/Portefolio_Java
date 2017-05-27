@@ -6,8 +6,10 @@ import Utilitarios.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -19,6 +21,7 @@ public class RegistoEventos {
     private final List<Evento> listaEventos = new ArrayList();
     private List<Evento> listaEventoOrganizador;
     private final String NOME_FICHEIRO_TEXTO = "Eventos.txt";
+    public static final String NOME_FICHEIRO_BINARIO = "Eventos.bin";
     
 
     private RegistoEventos() {
@@ -160,6 +163,21 @@ public class RegistoEventos {
             return false;
         }
         return true;
+    }
+    
+    public boolean guardarListaEventos(){
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(
+                    new FileOutputStream(NOME_FICHEIRO_BINARIO));
+            try {
+                out.writeObject(listaEventos);
+            } finally {
+                out.close();
+            }
+            return true;
+        } catch (IOException ex) {
+            return false;
+        }
     }
     
     private Data extrairData(String texto){

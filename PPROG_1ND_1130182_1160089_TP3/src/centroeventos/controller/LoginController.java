@@ -50,6 +50,11 @@ public class LoginController {
             //&&criarCandidaturas;
     }
     
+    public boolean guardarBinario(){
+        return centroEventos.getRegistoUtilizadores().guardarListaUtilizadores() &&
+               centroEventos.getRegistoEventos().guardarListaEventos();
+    }
+    
     private boolean validarLogin(String email, char[] password){
        List<Utilizador> list = centroEventos.getRegistoUtilizadores().getListaUtilizadores();
        String pass= new String (password);

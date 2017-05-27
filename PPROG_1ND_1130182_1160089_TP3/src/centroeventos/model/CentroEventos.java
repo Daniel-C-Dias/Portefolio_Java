@@ -197,7 +197,6 @@ public class CentroEventos {
            for (Evento ev : listaEv){System.out.println(ev.toString());}
            return true;
     }
-         
-       
+    
     }
 

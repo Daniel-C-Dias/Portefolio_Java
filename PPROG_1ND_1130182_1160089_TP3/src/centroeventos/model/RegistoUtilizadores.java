@@ -3,8 +3,10 @@ package centroeventos.model;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class RegistoUtilizadores {
    
    private static RegistoUtilizadores registoUtilizadores = new RegistoUtilizadores();
    private static final String NOME_FICHEIRO_TEXTO = "Utilizadores.txt";
+   public static final String NOME_FICHEIRO_BINARIO = "Utilizadores.bin";
     
     private RegistoUtilizadores(){
         
@@ -80,5 +83,20 @@ public class RegistoUtilizadores {
         }
         return true;
         
+    }
+    
+    public boolean guardarListaUtilizadores(){
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(
+                    new FileOutputStream(NOME_FICHEIRO_BINARIO));
+            try {
+                out.writeObject(listaUtilizadores);
+            } finally {
+                out.close();
+            }
+            return true;
+        } catch (IOException ex) {
+            return false;
+        }
     }
 }
