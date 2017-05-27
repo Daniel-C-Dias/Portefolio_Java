@@ -296,7 +296,7 @@ public abstract class Evento implements Serializable {
         List<AtribuicaoCandidatura> listaAtribuicaoCandidaturasFae = new ArrayList();
         for (AtribuicaoCandidatura atribuicao : listaAtribuicoes){
              //valida que ainda não foi avaliada (ainda não tem decisão)   
-            if (atribuicao.getFae().getuFae().equals(uFae) && atribuicao.getDecisao()==null ){
+            if (atribuicao.getFae().getuFae().equals(uFae) && atribuicao.getDecisao().isAceite()==false ){ 
                     listaAtribuicaoCandidaturasFae.add(atribuicao);
                 }
             }

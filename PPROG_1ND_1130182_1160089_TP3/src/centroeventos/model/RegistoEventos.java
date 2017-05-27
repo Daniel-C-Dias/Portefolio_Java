@@ -44,7 +44,9 @@ public class RegistoEventos {
         for (Evento e : listaEventos) {
             List<FAE> listaFae = e.getListaFaeEvento();
             for (FAE f : listaFae) {
-                if (f.getuFae().equals(fae) && e.getDataInicio().isMaior(Data.dataAtual()) && Data.dataAtual().isMaior(e.getDataLimiteSubCandidaturas())) {
+                //Para ser possivel testar é necessário alterar a condição de validação das datas
+                //if (f.getuFae().equals(fae) && e.getDataInicio().isMaior(Data.dataAtual()) && Data.dataAtual().isMaior(e.getDataLimiteSubCandidaturas())) {  
+                if (f.getuFae().equals(fae) && e.getDataInicio().isMaior(Data.dataAtual()) ) {
                     listaEventosFae.add(e);
                 }
             }

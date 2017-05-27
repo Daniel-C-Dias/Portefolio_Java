@@ -16,11 +16,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -33,6 +35,7 @@ public class DecidirCandidaturaUI extends JPanel {
     private AtribuicaoCandidatura candidaturaSelecionada;
     private JComboBox cbEventos;
     private JComboBox cbCandidaturas;
+    private JButton btDecidir;
     private JPanel p2;
     private JPanel p3;
     private final DecidirCandidaturaController DECIDIR_CONTROLLER;
@@ -48,15 +51,16 @@ public class DecidirCandidaturaUI extends JPanel {
        this.userContexto=userContexto; 
        this.pCardLayout=pCardLayout;
        this.cardLayout=cardLayout;
-       this.setLayout(new GridLayout(3,1,10,10));
+       this.setLayout(new BorderLayout(10,10));
        JPanel p1= criarP1();
        p2= new JPanel();
        p3= new JPanel();
+       p2.setVisible(false);
+       p3.setVisible(false);
        
-       add(p1);
-       add(p2);
-       add(p3);
-       
+       add(p1, BorderLayout.NORTH);
+       add(p2, BorderLayout.CENTER);
+       add(p3, BorderLayout.SOUTH);
     }
     
     private JPanel criarP1(){
@@ -83,7 +87,7 @@ public class DecidirCandidaturaUI extends JPanel {
         JButton btCandidatura = criarBtCandidatura();
         
         p.add(labelCan);
-        p.add(cbEventos);
+        p.add(cbCandidaturas);
         p.add(btCandidatura);
         
         return p;
@@ -94,12 +98,11 @@ public class DecidirCandidaturaUI extends JPanel {
         
         JPanel p1 = criarLabel();
         JPanel p2 = criarPainelAceitar();
-        
-       
+        JPanel p3 = criarBotoesDecidir();
         
         p.add(p1, BorderLayout.NORTH);
         p.add(p2, BorderLayout.CENTER);
-       
+        p.add(p3, BorderLayout.SOUTH);
         
         return p;
     }
@@ -118,14 +121,41 @@ public class DecidirCandidaturaUI extends JPanel {
     }
     
     private JPanel criarPainelAceitar(){
-        JPanel p = new JPanel();
-                
+        JPanel pPainel = new JPanel(new GridLayout(3,1,10,10));
+        
+        JPanel p1 = new JPanel();
         JLabel lblAceitar = new JLabel("Aceita a candidatura:", JLabel.CENTER);
-        p.add(lblAceitar);
+        p1.add(lblAceitar);
         
+        JRadioButton btnSim = criarRadioBtn("Sim");	
+        JRadioButton btnNao= criarRadioBtn("Não");
+        btnSim.setSelected(true);
+        ButtonGroup group = new	ButtonGroup();	
+        group.add(btnSim);	
+        group.add(btnNao);	
+        p1.add(btnSim);
+        p1.add(btnNao);
         
+        JLabel lblMotivo = new JLabel("Texto justificativo da decisão:", JLabel.CENTER);
         
-        return Criar os radioButtons;
+        JTextField txtMotivo = new JTextField();
+        
+        pPainel.add(p1);
+        pPainel.add(lblMotivo);
+        pPainel.add(txtMotivo);
+        
+        return pPainel;
+    }
+    
+    private JPanel criarBotoesDecidir(){
+        JPanel p = new JPanel();
+        
+        btDecidir = criarBtDecidir();
+        JButton btVoltar = criarBtVoltar();
+        p.add(btDecidir);
+        p.add(btVoltar);
+
+        return p;
     }
     
     
@@ -161,10 +191,13 @@ public class DecidirCandidaturaUI extends JPanel {
                for (Evento ev : listaEventosFae){
                   if (ev.getTitulo().equals(cbEventos.getSelectedItem())) {
                       eventoSelecionado= ev;
+                      break;
                   }
                 }
                p2= criarP2();
-               p2.revalidate(); 
+               add(p2, BorderLayout.CENTER);
+               p2.setVisible(true);
+               revalidate();
             }
         });
         
@@ -176,48 +209,59 @@ public class DecidirCandidaturaUI extends JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                idCandidatura = Integer.parseInt((String)cbCandidaturas.getSelectedItem());
+                idCandidatura = (Integer)cbCandidaturas.getSelectedItem() ;
                 for (AtribuicaoCandidatura atribuicao :listaAtribCandidaturasEv ){
                     if(atribuicao.getIdCandidatura()==idCandidatura){
                         candidaturaSelecionada=atribuicao;
                         break;
                     }
                 }
-                
                p3= criarP3();
-               p3.revalidate(); 
+               add(p3, BorderLayout.SOUTH);
+               p3.setVisible(true);
+               revalidate();
             }
         });
         
         return btn;
     }
     
+     private  JRadioButton criarRadioBtn(String nome){
+         
+         JRadioButton jbtn = new JRadioButton(nome);
+       
+         jbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               jbtn.setSelected(true);
+            }
+        });
+         
+        return jbtn;
+    }
     
- 
-    //
+    private JButton criarBtDecidir(){
+        JButton btn = new JButton("Decidir Candidatura");
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+        
+        return btn; 
+    }
     
-    
-//     private  JRadioButton criarRadioBtn(String nome){
-//         
-//         JRadioButton jbtn = new JRadioButton(nome);
-//       
-//         jbtn.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//              ///
-//            }
-//        });
-//         
-//        return jbtn;
-//     }
-    
-//      JRadioButton	smallButton= criarRadioBtn("Small");	
-//         JRadioButton	mediumButton= criarRadioBtn("Medium");	
-//         JRadioButton	largeButton= criarRadioBtn("Large");
-//         smallButton.setSelected(true);
-//         ButtonGroup	group	= new	ButtonGroup();	
-//         group.add(smallButton);	
-//         group.add(mediumButton);	
-//         group.add(largeButton);
-//    p.setBorder(new	TitledBorder(new EtchedBorder(),"Selecione um algoritmo de atribuição"));
+    private JButton criarBtVoltar(){
+        JButton btn = new JButton("Voltar");
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               cardLayout.first(pCardLayout);
+            }
+        });
+        
+        return btn; 
+    }
+
 }

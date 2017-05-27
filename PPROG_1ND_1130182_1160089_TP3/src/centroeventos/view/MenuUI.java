@@ -11,15 +11,12 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -57,7 +54,6 @@ public class MenuUI extends JFrame {
         pCardLayout = criarPainelCardLayout();
        
         add(pCardLayout);
-        //cardLayout.show(pCardLayout, PAINEL_INICIAL);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();

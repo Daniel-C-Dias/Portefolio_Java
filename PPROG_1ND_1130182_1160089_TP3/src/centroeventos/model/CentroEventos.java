@@ -187,12 +187,12 @@ public class CentroEventos {
         List <Evento> listaEv = registoEventos.getListaEventos();
         
          for (Evento ev : listaEv){
-         for (FAE fae :listaFae){
+            for (FAE fae :listaFae){
               ev.addFAE(fae);
-         }
-         for (Organizador org :listaOrganizadores){
+            }
+            for (Organizador org :listaOrganizadores){
               ev.addOrganizador(org);
-         }
+            }
         }
            for (Evento ev : listaEv){System.out.println(ev.toString());}
            return true;
