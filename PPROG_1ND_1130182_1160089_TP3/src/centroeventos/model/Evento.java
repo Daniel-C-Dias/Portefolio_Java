@@ -283,7 +283,14 @@ public abstract class Evento implements Serializable {
         return this.listaFaeEvento.add(f);
     }
     
-    
+    public Candidatura getCandidaturaPorId(int idCandidatura){
+        for (Candidatura candidatura : listaCandidaturasEvento){
+            if(candidatura.getIdCandidatura()==idCandidatura){
+                return candidatura;
+            }
+        }
+        return null;
+    }
    
     public List<AtribuicaoCandidatura> getListaAtribuicaoCandidaturasFAE(Utilizador uFae){
         List<AtribuicaoCandidatura> listaAtribuicaoCandidaturasFae = new ArrayList();

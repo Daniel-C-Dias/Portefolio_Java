@@ -32,4 +32,8 @@ public class DecidirCandidaturaController {
     public List<AtribuicaoCandidatura> getListaCandidaturasFAE(Utilizador uFae, int idEvento){
         return centroEventos.getRegistoEventos().getEvento(idEvento).getListaAtribuicaoCandidaturasFAE(uFae);
     }
+    
+    public String getMotivoCandidatura(Evento evento, int idCandidatura){
+        return centroEventos.getRegistoEventos().getEvento(evento.getIdEvento()).getCandidaturaPorId(idCandidatura).getMotivo();
+    }
 }

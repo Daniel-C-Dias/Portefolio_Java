@@ -36,9 +36,11 @@ public class DecidirCandidaturaUI extends JPanel {
     private JPanel p2;
     private JPanel p3;
     private final DecidirCandidaturaController DECIDIR_CONTROLLER;
+    private List <AtribuicaoCandidatura> listaAtribCandidaturasEv;
     private List<Evento> listaEventosFae;
     private final JPanel pCardLayout;
     private final CardLayout cardLayout;
+    private int idCandidatura;
     
     public DecidirCandidaturaUI(Utilizador userContexto, JPanel pCardLayout, CardLayout cardLayout){
        
@@ -60,7 +62,7 @@ public class DecidirCandidaturaUI extends JPanel {
     private JPanel criarP1(){
         JPanel p = new JPanel();
         
-        JLabel labelEv = new JLabel("Por favor selecione um evento!", JLabel.CENTER);
+        JLabel labelEv = new JLabel("Por favor selecione um evento:", JLabel.CENTER);
         cbEventos = criarCbEventos();
         cbEventos.setMaximumRowCount(4);
         JButton btEventos = criarBtEventos();
@@ -75,14 +77,14 @@ public class DecidirCandidaturaUI extends JPanel {
     private JPanel criarP2(){
         JPanel p = new JPanel();
         
-        JLabel labelCan = new JLabel("Por favor selecione uma candidatura!", JLabel.CENTER);
+        JLabel labelCan = new JLabel("Por favor selecione uma candidatura:", JLabel.CENTER);
         cbCandidaturas = criarCbCandidaturas();
         cbCandidaturas.setMaximumRowCount(4);
-        JButton btCan = criarBtCan();
+        JButton btCandidatura = criarBtCandidatura();
         
         p.add(labelCan);
         p.add(cbEventos);
-        p.add(btCan);
+        p.add(btCandidatura);
         
         return p;
     }
@@ -90,17 +92,42 @@ public class DecidirCandidaturaUI extends JPanel {
     private JPanel criarP3(){
         JPanel p = new JPanel(new BorderLayout());
         
-        JLabel labelCan = new JLabel("Por favor selecione uma candidatura!", JLabel.CENTER);
-        cbCandidaturas = criarCbCandidaturas();
-        cbCandidaturas.setMaximumRowCount(4);
-        JButton btCan = criarBtCan();
+        JPanel p1 = criarLabel();
+        JPanel p2 = criarPainelAceitar();
         
-        p.add(labelCan);
-        p.add(cbEventos);
-        p.add(btCan);
+       
+        
+        p.add(p1, BorderLayout.NORTH);
+        p.add(p2, BorderLayout.CENTER);
+       
         
         return p;
     }
+    
+    private JPanel criarLabel(){
+        JPanel p = new JPanel();
+        
+        String motivo=(DECIDIR_CONTROLLER.getMotivoCandidatura(eventoSelecionado,idCandidatura)==null)
+        ?"Sem motivo apresentado"
+        :DECIDIR_CONTROLLER.getMotivoCandidatura(eventoSelecionado,idCandidatura);
+                
+        JLabel labelCan = new JLabel(motivo, JLabel.CENTER);
+        p.add(labelCan);
+        
+        return p;
+    }
+    
+    private JPanel criarPainelAceitar(){
+        JPanel p = new JPanel();
+                
+        JLabel lblAceitar = new JLabel("Aceita a candidatura:", JLabel.CENTER);
+        p.add(lblAceitar);
+        
+        
+        
+        return Criar os radioButtons;
+    }
+    
     
     private JComboBox criarCbEventos(){
         listaEventosFae =  DECIDIR_CONTROLLER.getListaEventosFAE(userContexto);
@@ -114,9 +141,14 @@ public class DecidirCandidaturaUI extends JPanel {
         return new JComboBox(arrayListaEventosFaeString);
     }
     
-    private JComboBox criarCbCandidaturas(){ // ESTOU NESTA LOGICA!!!!!!!!!!!!!!
-        List <AtribuicaoCandidatura> listaCandidaturasEv = DECIDIR_CONTROLLER.getListaCandidaturasFAE(userContexto, eventoSelecionado.getIdEvento());
-        AtribuicaoCandidatura[] arrayListaCandidaturasEv = listaCandidaturasEv.toArray(new AtribuicaoCandidatura[0]);
+    private JComboBox criarCbCandidaturas(){ 
+        listaAtribCandidaturasEv = DECIDIR_CONTROLLER.getListaCandidaturasFAE(userContexto, eventoSelecionado.getIdEvento());
+        ArrayList<Integer> listaIdsCandidaturas = new ArrayList();
+        for (AtribuicaoCandidatura atribuicao :listaAtribCandidaturasEv ){
+            listaIdsCandidaturas.add(atribuicao.getIdCandidatura());
+        }
+        
+        Integer[] arrayListaCandidaturasEv = listaIdsCandidaturas.toArray(new Integer[0]);
         
         return new JComboBox(arrayListaCandidaturasEv);
     }
@@ -132,27 +164,38 @@ public class DecidirCandidaturaUI extends JPanel {
                   }
                 }
                p2= criarP2();
-               p2.revalidate(); //PERCEBER MELHOR
+               p2.revalidate(); 
+            }
+        });
+        
+        return btn;
+    }
+   
+    private JButton criarBtCandidatura(){
+        JButton btn = new JButton("Candidatura Selecionada");
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                idCandidatura = Integer.parseInt((String)cbCandidaturas.getSelectedItem());
+                for (AtribuicaoCandidatura atribuicao :listaAtribCandidaturasEv ){
+                    if(atribuicao.getIdCandidatura()==idCandidatura){
+                        candidaturaSelecionada=atribuicao;
+                        break;
+                    }
+                }
+                
+               p3= criarP3();
+               p3.revalidate(); 
             }
         });
         
         return btn;
     }
     
-    private JButton criarBtCan(){
-        JButton btn = new JButton("Candidatura Selecionada");
-        btn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               int id = (Integer) cbCandidaturas.getSelectedItem();
-               //candidaturaSelecionada= // chamada ao controller 
-               //p3= criarP3();
-              //p3.revalidate(); //PERCEBER MELHOR
-            }
-        });
-        
-        return btn;
-    }
+    
+ 
+    //
+    
     
 //     private  JRadioButton criarRadioBtn(String nome){
 //         
