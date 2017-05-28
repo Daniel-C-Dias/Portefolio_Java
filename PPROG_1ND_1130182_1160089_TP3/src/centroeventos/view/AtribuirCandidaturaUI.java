@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package centroeventos.view;
 
 import centroeventos.controller.AtribuirCandidaturaController;
@@ -29,7 +25,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Daniel
+ * @author Daniel Dias & José Gonçalves
  */
 public class AtribuirCandidaturaUI extends JPanel {
 
