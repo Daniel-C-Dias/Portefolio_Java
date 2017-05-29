@@ -38,7 +38,7 @@ public class MenuUI extends JFrame {
     private JPasswordField password;
     private Utilizador userContexto;
 
-    {
+    { //inicializing block
         LOGIN_CONTROLLER = new LoginController();
         LOGIN_CONTROLLER.carregarDados();
     }

@@ -23,6 +23,7 @@ public class CentroEventos {
     private List<Organizador> listaOrganizadores = new ArrayList();
     private List<Participante> listaParticipantes = new ArrayList();
     private List<Representante> listaRepresentantes = new ArrayList();
+    
     private static final String NOME_FICHEIRO_TEXTO = "Utilizadores.txt";
 
     private CentroEventos() {
@@ -158,7 +159,7 @@ public class CentroEventos {
                     FAE f = novoFAE(utilizador);
                     listaFae.add(f);
                 }
-                else if(i<10){
+                else if(i<10){ 
                     Utilizador utilizador = getRegistoUtilizadores().getUtilizadorPorEmail(arrayLinha[1]);
                     Organizador org = novoOrganizador(utilizador);
                     listaOrganizadores.add(org);
